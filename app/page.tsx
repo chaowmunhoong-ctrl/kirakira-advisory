@@ -58,49 +58,96 @@ export default function Home() {
         }} />
 
         <div className="max-w-6xl mx-auto relative">
-          {/* Headline + CTA */}
-          <div className="text-center mb-12">
-            <div
-              className="inline-block px-4 py-1 rounded-full text-xs font-bold tracking-widest uppercase mb-6"
-              style={{ backgroundColor: '#FFDA1A', color: '#0051BA' }}
-            >
-              Smart Solutions for Accountants
-            </div>
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-6">
-              Work Smarter.<br />
-              <span style={{ color: '#FFDA1A' }}>Not Harder.</span>
-            </h1>
-            <p className="text-lg sm:text-xl leading-relaxed mb-10 max-w-2xl mx-auto" style={{ color: 'rgba(255,255,255,0.85)' }}>
-              Kirakira Advisory helps accounting professionals automate the routine, sharpen their reporting, and connect the tools they rely on every day.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/services"
-                className="px-8 py-4 rounded font-bold text-base hover:opacity-90 transition"
+          {/* Split layout */}
+          <div className="flex flex-col lg:flex-row items-center gap-12 pb-14">
+
+            {/* Left — text */}
+            <div className="lg:w-1/2 text-center lg:text-left">
+              <div
+                className="inline-block px-4 py-1 rounded-full text-xs font-bold tracking-widest uppercase mb-6"
                 style={{ backgroundColor: '#FFDA1A', color: '#0051BA' }}
               >
-                Explore Services
-              </Link>
-              <Link
-                href="/blog"
-                className="px-8 py-4 rounded font-bold text-base border-2 border-white text-white hover:bg-white hover:text-blue-900 transition"
+                Smart Solutions for Accountants
+              </div>
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-6">
+                Work<br />Smarter.<br />
+                <span style={{ color: '#FFDA1A' }}>Not Harder.</span>
+              </h1>
+              <p className="text-lg sm:text-xl leading-relaxed mb-10" style={{ color: 'rgba(255,255,255,0.85)' }}>
+                Kirakira Advisory helps accounting professionals automate the routine, sharpen their reporting, and connect the tools they rely on every day.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <Link
+                  href="/services"
+                  className="px-8 py-4 rounded font-bold text-base hover:opacity-90 transition"
+                  style={{ backgroundColor: '#FFDA1A', color: '#0051BA' }}
+                >
+                  Explore Services
+                </Link>
+                <Link
+                  href="/blog"
+                  className="px-8 py-4 rounded font-bold text-base border-2 border-white text-white hover:bg-white hover:text-blue-900 transition"
+                >
+                  Read Our Blog
+                </Link>
+              </div>
+            </div>
+
+            {/* Right — stats panel */}
+            <div className="lg:w-1/2 w-full">
+              <div
+                className="rounded-2xl p-8 sm:p-10"
+                style={{ backgroundColor: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.15)' }}
               >
-                Read Our Blog
-              </Link>
+                <div className="grid grid-cols-3 gap-4 mb-8">
+                  {[
+                    { value: '80%', label: 'Less manual data entry' },
+                    { value: '3×', label: 'Faster month-end close' },
+                    { value: '100%', label: 'Built for accountants' },
+                  ].map(s => (
+                    <div key={s.value} className="text-center">
+                      <p className="text-3xl sm:text-4xl font-extrabold" style={{ color: '#FFDA1A' }}>{s.value}</p>
+                      <p className="text-xs mt-1" style={{ color: 'rgba(255,255,255,0.7)' }}>{s.label}</p>
+                    </div>
+                  ))}
+                </div>
+                <div className="space-y-3">
+                  {[
+                    { step: '01', text: 'We map your current workflow' },
+                    { step: '02', text: 'We design a targeted solution' },
+                    { step: '03', text: 'You run faster, with fewer errors' },
+                  ].map(item => (
+                    <div
+                      key={item.step}
+                      className="flex items-center gap-4 rounded-xl px-5 py-4"
+                      style={{ backgroundColor: 'rgba(255,255,255,0.07)' }}
+                    >
+                      <span className="text-sm font-extrabold" style={{ color: '#FFDA1A' }}>{item.step}</span>
+                      <span className="text-sm font-medium text-white">{item.text}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-8 pt-6" style={{ borderTop: '1px solid rgba(255,255,255,0.1)' }}>
+                  <p className="text-xs font-bold tracking-widest uppercase mb-3" style={{ color: 'rgba(255,255,255,0.5)' }}>Tools we work with</p>
+                  <p className="text-sm font-medium" style={{ color: 'rgba(255,255,255,0.75)' }}>
+                    SQL Account · AutoCount · Xero · Bukku · Google Sheets · Microsoft Excel · Google Apps Script
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
+        </div>
 
-          {/* Hero image — flush to bottom of section */}
-          <div className="flex justify-center">
-            <Image
-              src="/images/hero.png"
-              alt="KiraKira Advisory — Smart Automation for Smarter Accounting"
-              width={1200}
-              height={797}
-              className="w-full max-w-5xl rounded-t-2xl shadow-2xl"
-              priority
-            />
-          </div>
+        {/* Hero image — full bleed below split */}
+        <div className="mx-[-1rem] sm:mx-[-1.5rem]">
+          <Image
+            src="/images/hero.png"
+            alt="KiraKira Advisory — Smart Automation for Smarter Accounting"
+            width={1920}
+            height={1275}
+            className="w-full"
+            priority
+          />
         </div>
       </section>
 
