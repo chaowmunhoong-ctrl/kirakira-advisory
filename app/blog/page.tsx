@@ -1,5 +1,6 @@
 'use client'
 import { useEffect } from 'react'
+import BlogIcon from '../components/BlogIcon'
 
 function useReveal() {
   useEffect(() => {
@@ -49,16 +50,25 @@ export default function BlogPage() {
     <div>
 
       {/* Hero */}
-      <section style={{ backgroundColor: '#0051BA', position: 'relative', overflow: 'hidden' }} className="py-20 sm:py-24 px-4 sm:px-6 text-center">
+      <section style={{ backgroundColor: '#0051BA', position: 'relative', overflow: 'hidden' }} className="px-4 sm:px-6 pt-16 sm:pt-20 pb-16 sm:pb-20">
         <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle, rgba(255,218,26,0.08) 1px, transparent 1px)', backgroundSize: '32px 32px', pointerEvents: 'none' }} />
-        <div className="shape-a absolute rounded-full opacity-10" style={{ width: 160, height: 160, backgroundColor: '#FFDA1A', top: '-30px', left: '6%' }} />
-        <div className="shape-b absolute rounded-full opacity-10" style={{ width: 90, height: 90, backgroundColor: '#fff', bottom: '8%', right: '5%' }} />
-        <div className="max-w-3xl mx-auto relative">
-          <p className="badge-in text-xs font-bold tracking-widest uppercase mb-4" style={{ color: '#FFDA1A', opacity: 0 }}>Insights</p>
-          <h1 className="fade-up text-5xl sm:text-6xl font-extrabold text-white mb-5" style={{ opacity: 0, animationDelay: '0.1s' }}>For Accounting Professionals</h1>
-          <p className="fade-up text-lg sm:text-xl" style={{ color: 'rgba(255,255,255,0.82)', opacity: 0, animationDelay: '0.3s' }}>
-            Practical tips on automation, reporting, spreadsheets, and software. No fluff.
-          </p>
+        <div className="shape-a absolute rounded-full opacity-10" style={{ width: 160, height: 160, backgroundColor: '#FFDA1A', top: '-30px', right: '6%' }} />
+        <div className="shape-b absolute rounded-full opacity-10" style={{ width: 90, height: 90, backgroundColor: '#fff', bottom: '8%', left: '5%' }} />
+        <div className="max-w-6xl mx-auto relative">
+          <div className="flex flex-col lg:flex-row items-center gap-12">
+            {/* Left — text */}
+            <div className="lg:w-1/2 text-center lg:text-left">
+              <p className="badge-in text-xs font-bold tracking-widest uppercase mb-5" style={{ color: '#FFDA1A', opacity: 0 }}>Insights</p>
+              <h1 className="fade-up text-5xl sm:text-6xl font-extrabold text-white leading-tight mb-6" style={{ opacity: 0, animationDelay: '0.1s' }}>For Accounting<br/>Professionals</h1>
+              <p className="fade-up text-lg sm:text-xl" style={{ color: 'rgba(255,255,255,0.82)', opacity: 0, animationDelay: '0.3s' }}>
+                Practical tips on automation, reporting, spreadsheets, and software. No fluff.
+              </p>
+            </div>
+            {/* Right — icon */}
+            <div className="lg:w-1/2 w-full fade-up" style={{ animationDelay: '0.4s', opacity: 0 }}>
+              <BlogIcon />
+            </div>
+          </div>
         </div>
       </section>
 
