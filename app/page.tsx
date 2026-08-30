@@ -112,8 +112,8 @@ export default function Home() {
             <div className="lg:w-1/2 w-full fade-up" style={{ animationDelay: '0.4s', opacity: 0 }}>
               <WorkflowIcon />
               <div className="grid grid-cols-3 gap-4 mt-8">
-                <StatCard value={80}  suffix="%" label="Less manual work" delay="0s" />
-                <StatCard value={3}   suffix="×" label="Faster close"     delay="0.15s" />
+                <StatCard value={10}  suffix="×" label="Faster reports"   delay="0s" />
+                <StatCard value={5}   suffix="×" label="Faster close"     delay="0.15s" />
                 <StatCard value={100} suffix="%" label="For accountants"  delay="0.3s" />
               </div>
               <div className="mt-6 pt-5" style={{ borderTop: '1px solid rgba(255,255,255,0.15)' }}>
