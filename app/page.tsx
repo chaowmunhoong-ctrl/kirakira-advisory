@@ -57,6 +57,18 @@ export default function Home() {
           pointerEvents: 'none',
         }} />
 
+        {/* Hero image — full bleed at top */}
+        <div className="mx-[-1rem] sm:mx-[-1.5rem] mb-14">
+          <Image
+            src="/images/hero.png"
+            alt="KiraKira Advisory — Smart Automation for Smarter Accounting"
+            width={1920}
+            height={1275}
+            className="w-full"
+            priority
+          />
+        </div>
+
         <div className="max-w-6xl mx-auto relative">
           {/* Split layout */}
           <div className="flex flex-col lg:flex-row items-center gap-12 pb-14">
@@ -138,17 +150,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Hero image — full bleed below split */}
-        <div className="mx-[-1rem] sm:mx-[-1.5rem]">
-          <Image
-            src="/images/hero.png"
-            alt="KiraKira Advisory — Smart Automation for Smarter Accounting"
-            width={1920}
-            height={1275}
-            className="w-full"
-            priority
-          />
-        </div>
       </section>
 
       {/* Yellow accent bar */}
