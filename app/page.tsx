@@ -119,7 +119,7 @@ export default function Home() {
               <div className="mt-6 pt-5" style={{ borderTop: '1px solid rgba(255,255,255,0.15)' }}>
                 <p className="text-xs font-bold tracking-widest uppercase mb-2 text-center" style={{ color: 'rgba(255,255,255,0.5)' }}>Tools we work with</p>
                 <p className="text-sm font-medium text-center" style={{ color: 'rgba(255,255,255,0.75)' }}>
-                  SQL Account · AutoCount · Xero · Bukku · Google Sheets · Microsoft Excel · Google Apps Script
+                  SQL Account · AutoCount · Xero · Bukku · Google Sheets · Microsoft Excel
                 </p>
               </div>
             </div>
