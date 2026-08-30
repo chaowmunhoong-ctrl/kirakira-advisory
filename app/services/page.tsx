@@ -68,8 +68,8 @@ export default function ServicesPage() {
       <section style={{ backgroundColor: '#0051BA' }} className="py-16 sm:py-20 px-4 sm:px-6 text-center">
         <div className="max-w-3xl mx-auto">
           <p className="text-xs font-bold tracking-widest uppercase mb-4" style={{ color: '#FFDA1A' }}>Our Services</p>
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-white mb-4">Solutions Built for Accountants</h1>
-          <p className="text-base sm:text-lg leading-relaxed" style={{ color: 'rgba(255,255,255,0.82)' }}>
+          <h1 className="text-5xl sm:text-6xl font-extrabold text-white mb-5">Solutions Built for Accountants</h1>
+          <p className="text-lg sm:text-xl leading-relaxed" style={{ color: 'rgba(255,255,255,0.82)' }}>
             Every service we offer is designed around one goal: helping accounting professionals spend less time on the routine and more time on the work that actually matters.
           </p>
         </div>
@@ -97,7 +97,7 @@ export default function ServicesPage() {
 
               {/* Right panel */}
               <div className="lg:w-2/3">
-                <p className="text-base leading-relaxed mb-6" style={{ color: '#444' }}>{s.description}</p>
+                <p className="text-lg leading-relaxed mb-6" style={{ color: '#444' }}>{s.description}</p>
                 <div className="p-5 rounded-xl" style={{ backgroundColor: '#EEF4FF', borderLeft: '4px solid #0051BA' }}>
                   <p className="text-sm font-bold mb-3" style={{ color: '#0051BA' }}>What you get</p>
                   <ul className="space-y-2">

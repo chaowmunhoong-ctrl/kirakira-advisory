@@ -40,8 +40,8 @@ export default function BlogPage() {
       <section style={{ backgroundColor: '#0051BA' }} className="py-16 sm:py-20 px-4 sm:px-6 text-center">
         <div className="max-w-3xl mx-auto">
           <p className="text-xs font-bold tracking-widest uppercase mb-4" style={{ color: '#FFDA1A' }}>Insights</p>
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-white mb-4">For Accounting Professionals</h1>
-          <p className="text-base sm:text-lg" style={{ color: 'rgba(255,255,255,0.82)' }}>
+          <h1 className="text-5xl sm:text-6xl font-extrabold text-white mb-5">For Accounting Professionals</h1>
+          <p className="text-lg sm:text-xl" style={{ color: 'rgba(255,255,255,0.82)' }}>
             Practical tips on automation, reporting, spreadsheets, and software. No fluff.
           </p>
         </div>
@@ -68,8 +68,8 @@ export default function BlogPage() {
                 </span>
                 <span className="text-xs" style={{ color: '#999' }}>{post.date}</span>
               </div>
-              <h2 className="text-xl font-bold mb-3" style={{ color: '#111' }}>{post.title}</h2>
-              <p className="text-sm leading-relaxed mb-4" style={{ color: '#555' }}>{post.excerpt}</p>
+              <h2 className="text-2xl font-bold mb-3" style={{ color: '#111' }}>{post.title}</h2>
+              <p className="text-base leading-relaxed mb-4" style={{ color: '#555' }}>{post.excerpt}</p>
               <span className="text-sm font-bold" style={{ color: '#0051BA' }}>Read more →</span>
             </article>
           ))}
