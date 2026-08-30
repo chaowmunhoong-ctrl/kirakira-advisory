@@ -1,6 +1,7 @@
 'use client'
 import { useState } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 const links = [
   { href: '/', label: 'Home' },
@@ -10,6 +11,10 @@ const links = [
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
+  const pathname = usePathname()
+
+  const isActive = (href: string) =>
+    href === '/' ? pathname === '/' : pathname.startsWith(href)
 
   return (
     <nav style={{ backgroundColor: '#0051BA' }}>
@@ -23,19 +28,21 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop links */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-2">
             {links.map(l => (
-              <Link key={l.href} href={l.href} className="text-sm font-medium text-white hover:opacity-75 transition">
+              <Link
+                key={l.href}
+                href={l.href}
+                className="px-5 py-2 rounded text-sm font-bold transition"
+                style={
+                  isActive(l.href)
+                    ? { backgroundColor: '#FFDA1A', color: '#0051BA' }
+                    : { color: 'rgba(255,255,255,0.85)' }
+                }
+              >
                 {l.label}
               </Link>
             ))}
-            <a
-              href="mailto:hello@kirakiraadvisory.com"
-              className="px-5 py-2 rounded text-sm font-bold transition hover:opacity-90"
-              style={{ backgroundColor: '#FFDA1A', color: '#0051BA' }}
-            >
-              Contact Us
-            </a>
           </div>
 
           {/* Hamburger */}
@@ -61,19 +68,16 @@ export default function Navbar() {
                 key={l.href}
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className="text-white text-sm font-medium py-3 px-2 rounded hover:bg-white hover:bg-opacity-10 transition"
+                className="text-sm font-bold py-3 px-4 rounded transition"
+                style={
+                  isActive(l.href)
+                    ? { backgroundColor: '#FFDA1A', color: '#0051BA' }
+                    : { color: 'rgba(255,255,255,0.85)' }
+                }
               >
                 {l.label}
               </Link>
             ))}
-            <a
-              href="mailto:hello@kirakiraadvisory.com"
-              className="mt-2 text-center py-3 rounded text-sm font-bold"
-              style={{ backgroundColor: '#FFDA1A', color: '#0051BA' }}
-              onClick={() => setOpen(false)}
-            >
-              Contact Us
-            </a>
           </div>
         )}
       </div>
