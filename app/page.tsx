@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
+import AutomationIcon from './components/AutomationIcon'
 
 /* ── Scroll-reveal hook ── */
 function useReveal() {
@@ -107,32 +108,19 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right — animated stats panel */}
+            {/* Right — animated automation icon + stats */}
             <div className="lg:w-1/2 w-full fade-up" style={{ animationDelay: '0.4s', opacity: 0 }}>
-              <div className="rounded-2xl p-8 sm:p-10" style={{ backgroundColor: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.15)', backdropFilter: 'blur(8px)' }}>
-                <div className="grid grid-cols-3 gap-4 mb-8">
-                  <StatCard value={80} suffix="%" label="Less manual work" delay="0s" />
-                  <StatCard value={3}  suffix="×"  label="Faster close"     delay="0.15s" />
-                  <StatCard value={100} suffix="%" label="For accountants"  delay="0.3s" />
-                </div>
-                <div className="space-y-3">
-                  {[
-                    { step: '01', text: 'We map your current workflow' },
-                    { step: '02', text: 'We design a targeted solution' },
-                    { step: '03', text: 'You run faster, with fewer errors' },
-                  ].map((item, i) => (
-                    <div key={item.step} className="flex items-center gap-4 rounded-xl px-5 py-4 transition-all duration-300 hover:bg-white hover:bg-opacity-10 cursor-default" style={{ backgroundColor: 'rgba(255,255,255,0.07)' }}>
-                      <span className="text-sm font-extrabold" style={{ color: '#FFDA1A' }}>{item.step}</span>
-                      <span className="text-sm font-medium text-white">{item.text}</span>
-                    </div>
-                  ))}
-                </div>
-                <div className="mt-8 pt-6" style={{ borderTop: '1px solid rgba(255,255,255,0.1)' }}>
-                  <p className="text-xs font-bold tracking-widest uppercase mb-3" style={{ color: 'rgba(255,255,255,0.5)' }}>Tools we work with</p>
-                  <p className="text-sm font-medium" style={{ color: 'rgba(255,255,255,0.75)' }}>
-                    SQL Account · AutoCount · Xero · Bukku · Google Sheets · Microsoft Excel · Google Apps Script
-                  </p>
-                </div>
+              <AutomationIcon />
+              <div className="grid grid-cols-3 gap-4 mt-8">
+                <StatCard value={80}  suffix="%" label="Less manual work" delay="0s" />
+                <StatCard value={3}   suffix="×" label="Faster close"     delay="0.15s" />
+                <StatCard value={100} suffix="%" label="For accountants"  delay="0.3s" />
+              </div>
+              <div className="mt-6 pt-5" style={{ borderTop: '1px solid rgba(255,255,255,0.15)' }}>
+                <p className="text-xs font-bold tracking-widest uppercase mb-2 text-center" style={{ color: 'rgba(255,255,255,0.5)' }}>Tools we work with</p>
+                <p className="text-sm font-medium text-center" style={{ color: 'rgba(255,255,255,0.75)' }}>
+                  SQL Account · AutoCount · Xero · Bukku · Google Sheets · Microsoft Excel · Google Apps Script
+                </p>
               </div>
             </div>
 
