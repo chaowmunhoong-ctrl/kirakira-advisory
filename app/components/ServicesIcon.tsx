@@ -1,178 +1,188 @@
 export default function ServicesIcon() {
+  const cx = 240, cy = 240
+  const r = 148
+
+  /* 4 outer nodes at cardinal positions */
+  const nodes = [
+    { angle: -90, icon: '⚡', label: 'AUTOMATE', color: '#FFDA1A' },
+    { angle:   0, icon: '📊', label: 'REPORTS',  color: '#FFDA1A' },
+    { angle:  90, icon: '📋', label: 'SHEETS',   color: '#FFDA1A' },
+    { angle: 180, icon: '🔗', label: 'INTEGRATE',color: '#FFDA1A' },
+  ]
+
   return (
     <div className="flex items-center justify-center w-full select-none">
-      <svg
-        viewBox="0 0 480 480"
-        width="100%"
-        style={{ maxWidth: 400 }}
-        xmlns="http://www.w3.org/2000/svg"
-        aria-hidden="true"
-      >
+      <svg viewBox="0 0 480 480" width="100%" style={{ maxWidth: 460 }} xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <defs>
-          <filter id="sg-glow-y" x="-40%" y="-40%" width="180%" height="180%">
-            <feGaussianBlur stdDeviation="5" result="blur" />
-            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          <filter id="sv-gy" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="7" result="b"/>
+            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
           </filter>
-          <filter id="sg-glow-b" x="-40%" y="-40%" width="180%" height="180%">
-            <feGaussianBlur stdDeviation="8" result="blur" />
-            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          <filter id="sv-gb" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="10" result="b"/>
+            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
           </filter>
-          <radialGradient id="sg-hub-grad" cx="50%" cy="50%" r="50%">
-            <stop offset="0%"   stopColor="#1a6fd4"/>
-            <stop offset="100%" stopColor="#001f5c"/>
+          <filter id="sv-soft" x="-80%" y="-80%" width="260%" height="260%">
+            <feGaussianBlur stdDeviation="18"/>
+          </filter>
+          <radialGradient id="sv-hub" cx="50%" cy="50%" r="50%">
+            <stop offset="0%"   stopColor="#1e5fc4"/>
+            <stop offset="100%" stopColor="#001a50"/>
           </radialGradient>
-          <radialGradient id="sg-amb" cx="50%" cy="50%" r="50%">
-            <stop offset="0%"   stopColor="#FFDA1A" stopOpacity="0.12"/>
+          <radialGradient id="sv-node" cx="50%" cy="50%" r="50%">
+            <stop offset="0%"   stopColor="#1a6fd4"/>
+            <stop offset="100%" stopColor="#002570"/>
+          </radialGradient>
+          <radialGradient id="sv-amb" cx="50%" cy="50%" r="50%">
+            <stop offset="0%"   stopColor="#FFDA1A" stopOpacity="0.18"/>
             <stop offset="100%" stopColor="#0051BA" stopOpacity="0"/>
           </radialGradient>
           <style>{`
-            @keyframes sg-spinCW  { from{transform:rotate(0deg)}   to{transform:rotate(360deg)} }
-            @keyframes sg-spinCCW { from{transform:rotate(0deg)}   to{transform:rotate(-360deg)} }
-            @keyframes sg-spinCW3 { from{transform:rotate(0deg)}   to{transform:rotate(360deg)} }
-            @keyframes sg-pulse {
-              0%,100%{opacity:.18;r:10} 50%{opacity:.45;r:14}
+            @keyframes sv-spin1 { from{transform:rotate(0deg)}   to{transform:rotate(360deg)} }
+            @keyframes sv-spin2 { from{transform:rotate(0deg)}   to{transform:rotate(-360deg)} }
+            @keyframes sv-spin3 { from{transform:rotate(0deg)}   to{transform:rotate(360deg)} }
+            @keyframes sv-pulse {
+              0%,100%{opacity:.15} 50%{opacity:.4}
             }
-            @keyframes sg-flow {
-              0%  {stroke-dashoffset:0}
-              100%{stroke-dashoffset:-80}
+            @keyframes sv-core {
+              0%,100%{opacity:.5} 50%{opacity:1}
             }
-            @keyframes sg-dot {
-              0%  {offset-distance:0%   ;opacity:1}
+            @keyframes sv-dash {
+              to{stroke-dashoffset:-60}
+            }
+            @keyframes sv-dot-flow {
+              0%  {stroke-dashoffset:0;   opacity:1}
               90% {opacity:1}
-              100%{offset-distance:100%;opacity:0}
+              100%{stroke-dashoffset:-300;opacity:0}
             }
-            @keyframes sg-card-glow {
-              0%,100%{filter:drop-shadow(0 0 3px #FFDA1A)}
-              50%    {filter:drop-shadow(0 0 10px #FFDA1A)}
+            @keyframes sv-node-glow {
+              0%,100%{filter:drop-shadow(0 0 4px #FFDA1A)}
+              50%    {filter:drop-shadow(0 0 18px #FFDA1A) drop-shadow(0 0 32px rgba(255,218,26,.4))}
             }
-            @keyframes sg-badge-float {
+            @keyframes sv-particle {
+              0%  {transform:translate(0,0)   opacity:1;r:4}
+              100%{transform:translate(var(--px),var(--py)) opacity:0;r:1}
+            }
+            @keyframes sv-badge {
               0%,100%{transform:translateY(0)}
-              50%    {transform:translateY(-4px)}
+              50%    {transform:translateY(-6px)}
             }
-            .sg-cw  { transform-origin:240px 220px; animation:sg-spinCW  7s linear infinite }
-            .sg-ccw { transform-origin:340px 300px; animation:sg-spinCCW 5s linear infinite }
-            .sg-cw3 { transform-origin:150px 310px; animation:sg-spinCW3 9s linear infinite }
-            .sg-flow1 { stroke-dasharray:14 8; animation:sg-flow 1.2s linear infinite }
-            .sg-flow2 { stroke-dasharray:14 8; animation:sg-flow 1.2s linear infinite 0.4s }
-            .sg-flow3 { stroke-dasharray:14 8; animation:sg-flow 1.2s linear infinite 0.8s }
-            .sg-card  { animation:sg-card-glow 3s ease-in-out infinite }
-            .sg-b1    { animation:sg-badge-float 3s ease-in-out infinite }
-            .sg-b2    { animation:sg-badge-float 3s ease-in-out infinite 1s }
-            .sg-b3    { animation:sg-badge-float 3s ease-in-out infinite 2s }
-            .sg-b4    { animation:sg-badge-float 3s ease-in-out infinite 1.5s }
+            @keyframes sv-ring-pulse {
+              0%,100%{r:68;opacity:.18} 50%{r:76;opacity:.4}
+            }
+            .sv-r1 { transform-origin:240px 240px; animation:sv-spin1 10s linear infinite }
+            .sv-r2 { transform-origin:240px 240px; animation:sv-spin2 15s linear infinite }
+            .sv-r3 { transform-origin:240px 240px; animation:sv-spin3  6s linear infinite }
+            .sv-p1 { animation:sv-pulse 3s ease-in-out infinite }
+            .sv-p2 { animation:sv-pulse 3s ease-in-out infinite 1s }
+            .sv-p3 { animation:sv-pulse 3s ease-in-out infinite 2s }
+            .sv-core { animation:sv-core 2.5s ease-in-out infinite }
+            .sv-d1 { stroke-dasharray:18 10; animation:sv-dash 1.5s linear infinite }
+            .sv-d2 { stroke-dasharray:18 10; animation:sv-dash 1.5s linear infinite .375s }
+            .sv-d3 { stroke-dasharray:18 10; animation:sv-dash 1.5s linear infinite .75s }
+            .sv-d4 { stroke-dasharray:18 10; animation:sv-dash 1.5s linear infinite 1.125s }
+            .sv-ng  { animation:sv-node-glow 3s ease-in-out infinite }
+            .sv-ng2 { animation:sv-node-glow 3s ease-in-out infinite .75s }
+            .sv-ng3 { animation:sv-node-glow 3s ease-in-out infinite 1.5s }
+            .sv-ng4 { animation:sv-node-glow 3s ease-in-out infinite 2.25s }
+            .sv-b1  { animation:sv-badge 3s ease-in-out infinite }
+            .sv-b2  { animation:sv-badge 3s ease-in-out infinite .75s }
+            .sv-b3  { animation:sv-badge 3s ease-in-out infinite 1.5s }
+            .sv-b4  { animation:sv-badge 3s ease-in-out infinite 2.25s }
           `}</style>
         </defs>
 
-        {/* Ambient glow */}
-        <ellipse cx="240" cy="260" rx="200" ry="160" fill="url(#sg-amb)"/>
+        {/* Ambient glow blob */}
+        <circle cx="240" cy="240" r="160" fill="url(#sv-amb)"/>
+        <circle cx="240" cy="240" r="80"  fill="#FFDA1A" opacity="0.06" filter="url(#sv-soft)"/>
 
-        {/* ── Flow lines between gears ── */}
-        {/* Large to small-right */}
-        <path d="M285,220 Q320,240 320,280" fill="none" stroke="rgba(255,218,26,0.3)" strokeWidth="2" className="sg-flow1"/>
-        {/* Large to small-left */}
-        <path d="M195,228 Q165,250 170,290" fill="none" stroke="rgba(255,218,26,0.3)" strokeWidth="2" className="sg-flow2"/>
-        {/* small-right to small-left (bottom) */}
-        <path d="M310,330 Q240,370 190,330" fill="none" stroke="rgba(255,218,26,0.3)" strokeWidth="2" className="sg-flow3"/>
+        {/* Pulse rings */}
+        <circle className="sv-p1" cx="240" cy="240" r="90"  fill="none" stroke="#FFDA1A" strokeWidth="1.5" opacity=".18"/>
+        <circle className="sv-p2" cx="240" cy="240" r="118" fill="none" stroke="#FFDA1A" strokeWidth="1"   opacity=".12"/>
+        <circle className="sv-p3" cx="240" cy="240" r="148" fill="none" stroke="#FFDA1A" strokeWidth=".8"  opacity=".07"/>
 
-        {/* ── Large centre gear ── */}
-        <g className="sg-cw">
-          {/* Gear teeth (8 teeth) */}
-          {[0,45,90,135,180,225,270,315].map((deg, i) => {
-            const rad = (deg * Math.PI) / 180
-            const cx = 240, cy = 220, r = 58
-            const x1 = cx + (r - 10) * Math.cos(rad)
-            const y1 = cy + (r - 10) * Math.sin(rad)
-            const x2 = cx + (r + 10) * Math.cos(rad)
-            const y2 = cy + (r + 10) * Math.sin(rad)
-            return <rect key={i}
-              x={x2 - 7} y={y2 - 7} width="14" height="14" rx="3"
-              fill="#0051BA" stroke="#FFDA1A" strokeWidth="1.5"
-              transform={`rotate(${deg}, ${x2}, ${y2})`}
+        {/* Orbit track */}
+        <circle cx="240" cy="240" r={r} fill="none" stroke="rgba(255,218,26,0.12)" strokeWidth="1" strokeDasharray="4 6"/>
+
+        {/* Spoke lines with animated dashes */}
+        {nodes.map((n, i) => {
+          const rad = (n.angle * Math.PI) / 180
+          const nx = cx + r * Math.cos(rad)
+          const ny = cy + r * Math.sin(rad)
+          const cls = `sv-d${i + 1}`
+          return (
+            <line key={i}
+              x1={cx + 62 * Math.cos(rad)} y1={cy + 62 * Math.sin(rad)}
+              x2={nx - 42 * Math.cos(rad)} y2={ny - 42 * Math.sin(rad)}
+              stroke="rgba(255,218,26,0.35)" strokeWidth="2" className={cls}
             />
-          })}
-          {/* Gear body */}
-          <circle cx="240" cy="220" r="54" fill="url(#sg-hub-grad)" stroke="#FFDA1A" strokeWidth="2"/>
-          <circle cx="240" cy="220" r="28" fill="#001540" stroke="rgba(255,218,26,0.4)" strokeWidth="1.5"/>
-          {/* Bolt holes */}
-          {[0,120,240].map((deg, i) => {
+          )
+        })}
+
+        {/* Outer rotating dashed rings */}
+        <g className="sv-r1">
+          <circle cx="240" cy="240" r="168" fill="none" stroke="rgba(255,218,26,0.25)" strokeWidth="1.5" strokeDasharray="22 14"/>
+        </g>
+        <g className="sv-r2">
+          <circle cx="240" cy="240" r="185" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="1" strokeDasharray="8 20"/>
+        </g>
+
+        {/* 4 moving dots on orbit */}
+        <g className="sv-r3">
+          {[0, 90, 180, 270].map((deg, i) => {
             const rad = (deg * Math.PI) / 180
-            return <circle key={i} cx={240 + 18 * Math.cos(rad)} cy={220 + 18 * Math.sin(rad)} r="4" fill="#FFDA1A" opacity="0.6"/>
+            return <circle key={i} cx={cx + r * Math.cos(rad)} cy={cy + r * Math.sin(rad)} r="5" fill="#FFDA1A" filter="url(#sv-gy)" opacity="0.9"/>
           })}
         </g>
 
-        {/* ── Small right gear ── */}
-        <g className="sg-ccw">
-          {[0,60,120,180,240,300].map((deg, i) => {
+        {/* 4 node cards */}
+        {nodes.map((n, i) => {
+          const rad = (n.angle * Math.PI) / 180
+          const nx = cx + r * Math.cos(rad)
+          const ny = cy + r * Math.sin(rad)
+          const glowCls = ['sv-ng','sv-ng2','sv-ng3','sv-ng4'][i]
+          const badgeCls = ['sv-b1','sv-b2','sv-b3','sv-b4'][i]
+          return (
+            <g key={i} className={`${glowCls} ${badgeCls}`} style={{ transformOrigin: `${nx}px ${ny}px` }}>
+              <rect x={nx - 44} y={ny - 30} width="88" height="60" rx="14"
+                fill="url(#sv-node)" stroke="#FFDA1A" strokeWidth="2"/>
+              <text x={nx} y={ny - 8} textAnchor="middle" fontSize="22" style={{ fontFamily: 'system-ui,sans-serif' }}>{n.icon}</text>
+              <text x={nx} y={ny + 20} textAnchor="middle" fontSize="8" fontWeight="700" fill="#fff" letterSpacing="0.8" style={{ fontFamily: 'system-ui,sans-serif' }}>{n.label}</text>
+            </g>
+          )
+        })}
+
+        {/* ── Central hub ── */}
+        {/* Outer glow */}
+        <circle cx="240" cy="240" r="72" fill="none" stroke="#FFDA1A" strokeWidth="2.5" opacity="0.25" filter="url(#sv-gb)"/>
+        {/* Hub body */}
+        <circle cx="240" cy="240" r="64" fill="url(#sv-hub)" stroke="#FFDA1A" strokeWidth="2.5"/>
+        {/* Inner spinning segmented ring */}
+        <g className="sv-r1" style={{ transformOrigin: '240px 240px' }}>
+          {[0, 45, 90, 135, 180, 225, 270, 315].map((deg, i) => {
             const rad = (deg * Math.PI) / 180
-            const cx = 340, cy = 300, r = 38
-            const x2 = cx + (r + 7) * Math.cos(rad)
-            const y2 = cy + (r + 7) * Math.sin(rad)
-            return <rect key={i}
-              x={x2 - 5} y={y2 - 5} width="10" height="10" rx="2"
-              fill="#0051BA" stroke="#FFDA1A" strokeWidth="1.2"
-              transform={`rotate(${deg}, ${x2}, ${y2})`}
-            />
+            const x1 = cx + 45 * Math.cos(rad), y1 = cy + 45 * Math.sin(rad)
+            const x2 = cx + 58 * Math.cos(rad), y2 = cy + 58 * Math.sin(rad)
+            return <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#FFDA1A" strokeWidth="3.5" strokeLinecap="round" opacity="0.8"/>
           })}
-          <circle cx="340" cy="300" r="35" fill="url(#sg-hub-grad)" stroke="#FFDA1A" strokeWidth="1.8"/>
-          <circle cx="340" cy="300" r="18" fill="#001540" stroke="rgba(255,218,26,0.35)" strokeWidth="1.2"/>
-          {[0,120,240].map((deg, i) => {
+        </g>
+        {/* Inner circle */}
+        <circle cx="240" cy="240" r="34" fill="#001540" stroke="rgba(255,218,26,0.5)" strokeWidth="1.5"/>
+        {/* CCW inner ring decoration */}
+        <g className="sv-r2" style={{ transformOrigin: '240px 240px' }}>
+          {[0, 60, 120, 180, 240, 300].map((deg, i) => {
             const rad = (deg * Math.PI) / 180
-            return <circle key={i} cx={340 + 11 * Math.cos(rad)} cy={300 + 11 * Math.sin(rad)} r="3" fill="#FFDA1A" opacity="0.6"/>
+            return <circle key={i} cx={cx + 26 * Math.cos(rad)} cy={cy + 26 * Math.sin(rad)} r="3" fill="#FFDA1A" opacity="0.5"/>
           })}
         </g>
+        {/* Core symbol */}
+        <text x="240" y="252" textAnchor="middle" fontSize="30" className="sv-core" filter="url(#sv-gy)" style={{ fontFamily: 'system-ui,sans-serif' }}>⚡</text>
 
-        {/* ── Small left gear ── */}
-        <g className="sg-cw3">
-          {[0,60,120,180,240,300].map((deg, i) => {
-            const rad = (deg * Math.PI) / 180
-            const cx = 150, cy = 310, r = 34
-            const x2 = cx + (r + 7) * Math.cos(rad)
-            const y2 = cy + (r + 7) * Math.sin(rad)
-            return <rect key={i}
-              x={x2 - 5} y={y2 - 5} width="10" height="10" rx="2"
-              fill="#0051BA" stroke="#FFDA1A" strokeWidth="1.2"
-              transform={`rotate(${deg}, ${x2}, ${y2})`}
-            />
-          })}
-          <circle cx="150" cy="310" r="31" fill="url(#sg-hub-grad)" stroke="#FFDA1A" strokeWidth="1.8"/>
-          <circle cx="150" cy="310" r="15" fill="#001540" stroke="rgba(255,218,26,0.35)" strokeWidth="1.2"/>
-          {[0,120,240].map((deg, i) => {
-            const rad = (deg * Math.PI) / 180
-            return <circle key={i} cx={150 + 9 * Math.cos(rad)} cy={310 + 9 * Math.sin(rad)} r="2.5" fill="#FFDA1A" opacity="0.6"/>
-          })}
-        </g>
-
-        {/* ── Icon in centre gear ── */}
-        <text x="240" y="228" textAnchor="middle" fontSize="28" style={{ fontFamily: 'system-ui,sans-serif', pointerEvents: 'none' }}>⚡</text>
-
-        {/* ── Floating service badges ── */}
-        {/* Top left */}
-        <g className="sg-b1 sg-card" style={{ transformOrigin: '78px 130px' }}>
-          <rect x="38" y="108" width="80" height="44" rx="10" fill="url(#sg-hub-grad)" stroke="#FFDA1A" strokeWidth="1.5"/>
-          <text x="78" y="127" textAnchor="middle" fontSize="13" fill="#FFDA1A" style={{ fontFamily: 'system-ui,sans-serif' }}>📋</text>
-          <text x="78" y="143" textAnchor="middle" fontSize="7.5" fontWeight="700" fill="#fff" letterSpacing="0.5" style={{ fontFamily: 'system-ui,sans-serif' }}>AUTOMATE</text>
-        </g>
-
-        {/* Top right */}
-        <g className="sg-b2 sg-card" style={{ transformOrigin: '390px 118px' }}>
-          <rect x="350" y="96" width="80" height="44" rx="10" fill="url(#sg-hub-grad)" stroke="#FFDA1A" strokeWidth="1.5"/>
-          <text x="390" y="115" textAnchor="middle" fontSize="13" fill="#FFDA1A" style={{ fontFamily: 'system-ui,sans-serif' }}>📊</text>
-          <text x="390" y="131" textAnchor="middle" fontSize="7.5" fontWeight="700" fill="#fff" letterSpacing="0.5" style={{ fontFamily: 'system-ui,sans-serif' }}>REPORTS</text>
-        </g>
-
-        {/* Bottom right */}
-        <g className="sg-b3 sg-card" style={{ transformOrigin: '404px 368px' }}>
-          <rect x="364" y="346" width="80" height="44" rx="10" fill="url(#sg-hub-grad)" stroke="#FFDA1A" strokeWidth="1.5"/>
-          <text x="404" y="365" textAnchor="middle" fontSize="13" fill="#FFDA1A" style={{ fontFamily: 'system-ui,sans-serif' }}>🔗</text>
-          <text x="404" y="381" textAnchor="middle" fontSize="7.5" fontWeight="700" fill="#fff" letterSpacing="0.5" style={{ fontFamily: 'system-ui,sans-serif' }}>INTEGRATE</text>
-        </g>
-
-        {/* Bottom left */}
-        <g className="sg-b4 sg-card" style={{ transformOrigin: '54px 388px' }}>
-          <rect x="14" y="366" width="80" height="44" rx="10" fill="url(#sg-hub-grad)" stroke="#FFDA1A" strokeWidth="1.5"/>
-          <text x="54" y="385" textAnchor="middle" fontSize="13" fill="#FFDA1A" style={{ fontFamily: 'system-ui,sans-serif' }}>📋</text>
-          <text x="54" y="401" textAnchor="middle" fontSize="7.5" fontWeight="700" fill="#fff" letterSpacing="0.5" style={{ fontFamily: 'system-ui,sans-serif' }}>SHEETS</text>
-        </g>
+        {/* Rising particles */}
+        <circle cx="224" cy="242" r="3.5" fill="#FFDA1A" opacity="0.9" style={{ animation: 'sv-particle 2.2s ease-out infinite', '--px': '-14px', '--py': '-80px' } as React.CSSProperties}/>
+        <circle cx="256" cy="246" r="2.5" fill="#fff"    opacity="0.7" style={{ animation: 'sv-particle 2.2s ease-out infinite .55s', '--px': '12px', '--py': '-70px' } as React.CSSProperties}/>
+        <circle cx="238" cy="250" r="3"   fill="#FFDA1A" opacity="0.8" style={{ animation: 'sv-particle 2.2s ease-out infinite 1.1s', '--px': '-6px', '--py': '-75px' } as React.CSSProperties}/>
+        <circle cx="250" cy="244" r="2"   fill="#fff"    opacity="0.6" style={{ animation: 'sv-particle 2.2s ease-out infinite 1.65s', '--px': '10px', '--py': '-65px' } as React.CSSProperties}/>
 
       </svg>
     </div>
