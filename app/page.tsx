@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import Image from 'next/image'
 
 const services = [
   {
@@ -56,33 +55,6 @@ export default function Home() {
           backgroundSize: '32px 32px',
           pointerEvents: 'none',
         }} />
-
-        {/* Animated hero image — Ken Burns + floating stat badges */}
-        <div className="mx-[-1rem] sm:mx-[-1.5rem] mb-14 relative overflow-hidden" style={{ borderRadius: '0 0 1rem 1rem' }}>
-          <Image
-            src="/images/hero.png"
-            alt="KiraKira Advisory — Smart Automation for Smarter Accounting"
-            width={1920}
-            height={1275}
-            className="w-full hero-ken-burns"
-            priority
-          />
-          {/* Floating stat badges */}
-          <div className="absolute inset-0 pointer-events-none">
-            <div className="float-in-1 float-loop-1 absolute top-6 right-6 sm:top-10 sm:right-10 bg-white rounded-2xl shadow-xl px-5 py-4 text-center" style={{ minWidth: '110px' }}>
-              <p className="text-2xl font-extrabold" style={{ color: '#0051BA' }}>80%</p>
-              <p className="text-xs font-semibold mt-1" style={{ color: '#666' }}>Less manual work</p>
-            </div>
-            <div className="float-in-2 float-loop-2 absolute bottom-10 left-6 sm:bottom-14 sm:left-10 bg-white rounded-2xl shadow-xl px-5 py-4 text-center" style={{ minWidth: '110px' }}>
-              <p className="text-2xl font-extrabold" style={{ color: '#0051BA' }}>3×</p>
-              <p className="text-xs font-semibold mt-1" style={{ color: '#666' }}>Faster close</p>
-            </div>
-            <div className="float-in-3 float-loop-3 absolute bottom-10 right-6 sm:bottom-14 sm:right-10 rounded-2xl shadow-xl px-5 py-4 text-center" style={{ minWidth: '120px', backgroundColor: '#FFDA1A' }}>
-              <p className="text-2xl font-extrabold" style={{ color: '#0051BA' }}>100%</p>
-              <p className="text-xs font-semibold mt-1" style={{ color: '#0051BA' }}>For accountants</p>
-            </div>
-          </div>
-        </div>
 
         <div className="max-w-6xl mx-auto relative">
           {/* Split layout */}
