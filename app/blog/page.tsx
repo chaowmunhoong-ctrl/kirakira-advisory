@@ -1,9 +1,19 @@
-import type { Metadata } from 'next'
+'use client'
+import { useEffect } from 'react'
 
-export const metadata: Metadata = {
-  title: 'Blog | Kirakira Advisory',
-  description: 'Practical tips and insights for accounting professionals on automation, reporting, spreadsheets, and software.',
+function useReveal() {
+  useEffect(() => {
+    const els = document.querySelectorAll('.reveal, .reveal-left, .reveal-right')
+    const io = new IntersectionObserver(
+      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible') }),
+      { threshold: 0.12 }
+    )
+    els.forEach(el => io.observe(el))
+    return () => io.disconnect()
+  }, [])
 }
+
+const WA_LINK = 'https://wa.me/60173384916'
 
 const posts = [
   {
@@ -33,39 +43,38 @@ const posts = [
 ]
 
 export default function BlogPage() {
+  useReveal()
+
   return (
     <div>
 
       {/* Hero */}
-      <section style={{ backgroundColor: '#0051BA' }} className="py-16 sm:py-20 px-4 sm:px-6 text-center">
-        <div className="max-w-3xl mx-auto">
-          <p className="text-xs font-bold tracking-widest uppercase mb-4" style={{ color: '#FFDA1A' }}>Insights</p>
-          <h1 className="text-5xl sm:text-6xl font-extrabold text-white mb-5">For Accounting Professionals</h1>
-          <p className="text-lg sm:text-xl" style={{ color: 'rgba(255,255,255,0.82)' }}>
+      <section style={{ backgroundColor: '#0051BA', position: 'relative', overflow: 'hidden' }} className="py-20 sm:py-24 px-4 sm:px-6 text-center">
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle, rgba(255,218,26,0.08) 1px, transparent 1px)', backgroundSize: '32px 32px', pointerEvents: 'none' }} />
+        <div className="shape-a absolute rounded-full opacity-10" style={{ width: 160, height: 160, backgroundColor: '#FFDA1A', top: '-30px', left: '6%' }} />
+        <div className="shape-b absolute rounded-full opacity-10" style={{ width: 90, height: 90, backgroundColor: '#fff', bottom: '8%', right: '5%' }} />
+        <div className="max-w-3xl mx-auto relative">
+          <p className="badge-in text-xs font-bold tracking-widest uppercase mb-4" style={{ color: '#FFDA1A', opacity: 0 }}>Insights</p>
+          <h1 className="fade-up text-5xl sm:text-6xl font-extrabold text-white mb-5" style={{ opacity: 0, animationDelay: '0.1s' }}>For Accounting Professionals</h1>
+          <p className="fade-up text-lg sm:text-xl" style={{ color: 'rgba(255,255,255,0.82)', opacity: 0, animationDelay: '0.3s' }}>
             Practical tips on automation, reporting, spreadsheets, and software. No fluff.
           </p>
         </div>
       </section>
 
-      {/* Yellow bar */}
       <div className="h-1.5" style={{ backgroundColor: '#FFDA1A' }} />
 
       {/* Posts */}
       <section className="py-16 px-4 sm:px-6 bg-white">
         <div className="max-w-4xl mx-auto space-y-6">
-          {posts.map(post => (
+          {posts.map((post, i) => (
             <article
               key={post.title}
-              className="border rounded-xl p-6 sm:p-8 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
+              className={`reveal reveal-delay-${(i % 4) + 1} border rounded-xl p-6 sm:p-8 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer`}
               style={{ borderColor: '#E5E7EB' }}
             >
               <div className="flex flex-wrap items-center gap-3 mb-3">
-                <span
-                  className="text-xs font-bold px-3 py-1 rounded-full"
-                  style={{ backgroundColor: '#FFDA1A', color: '#0051BA' }}
-                >
-                  {post.tag}
-                </span>
+                <span className="text-xs font-bold px-3 py-1 rounded-full" style={{ backgroundColor: '#FFDA1A', color: '#0051BA' }}>{post.tag}</span>
                 <span className="text-xs" style={{ color: '#999' }}>{post.date}</span>
               </div>
               <h2 className="text-2xl font-bold mb-3" style={{ color: '#111' }}>{post.title}</h2>
@@ -77,15 +86,24 @@ export default function BlogPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-12 px-4 sm:px-6 text-center" style={{ backgroundColor: '#F4F6FB' }}>
-        <p className="text-sm mb-2" style={{ color: '#666' }}>Want to stay updated with tips like these?</p>
-        <a
-          href="mailto:hello@kirakiraadvisory.com"
-          className="inline-block px-6 py-3 rounded font-bold text-sm hover:opacity-90 transition"
-          style={{ backgroundColor: '#0051BA', color: '#fff' }}
-        >
-          Get in Touch
-        </a>
+      <section className="cta-gradient py-20 px-4 sm:px-6 text-center" style={{ position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle, rgba(255,218,26,0.07) 1px, transparent 1px)', backgroundSize: '32px 32px', pointerEvents: 'none' }} />
+        <div className="max-w-2xl mx-auto relative reveal">
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">Want to talk through any of these?</h2>
+          <p className="text-lg mb-10" style={{ color: 'rgba(255,255,255,0.8)' }}>Send us a message and we will be happy to discuss how it applies to your team.</p>
+          <a
+            href={WA_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-3 px-10 py-4 rounded font-bold text-lg hover:opacity-90 transition"
+            style={{ backgroundColor: '#25D366', color: '#fff' }}
+          >
+            <svg viewBox="0 0 32 32" width="24" height="24" fill="white" xmlns="http://www.w3.org/2000/svg">
+              <path d="M16 2C8.268 2 2 8.268 2 16c0 2.478.668 4.797 1.832 6.793L2 30l7.418-1.805A13.94 13.94 0 0 0 16 30c7.732 0 14-6.268 14-14S23.732 2 16 2zm0 25.6a11.556 11.556 0 0 1-5.91-1.617l-.424-.252-4.402 1.07 1.1-4.285-.276-.44A11.556 11.556 0 0 1 4.4 16C4.4 9.59 9.59 4.4 16 4.4S27.6 9.59 27.6 16 22.41 27.6 16 27.6zm6.344-8.676c-.348-.174-2.06-1.016-2.38-1.132-.32-.116-.553-.174-.786.174-.232.347-.9 1.132-1.103 1.365-.203.232-.405.26-.754.086-.348-.174-1.47-.542-2.8-1.726-1.034-.922-1.732-2.06-1.936-2.408-.203-.348-.022-.536.153-.71.157-.156.348-.405.522-.608.174-.202.232-.347.348-.579.116-.232.058-.434-.029-.608-.087-.174-.786-1.896-1.077-2.597-.283-.682-.57-.59-.786-.6l-.67-.012c-.232 0-.608.087-.927.434-.319.348-1.218 1.19-1.218 2.9s1.247 3.363 1.42 3.595c.174.232 2.454 3.747 5.945 5.254.832.36 1.48.574 1.985.734.834.267 1.594.23 2.194.14.67-.1 2.06-.842 2.35-1.656.29-.813.29-1.51.203-1.656-.086-.145-.319-.232-.667-.406z"/>
+            </svg>
+            WhatsApp Us
+          </a>
+        </div>
       </section>
 
     </div>
