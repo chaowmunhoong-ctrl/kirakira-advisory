@@ -133,7 +133,7 @@ export default function Home() {
                 <div className="mt-8 pt-6" style={{ borderTop: '1px solid rgba(255,255,255,0.1)' }}>
                   <p className="text-xs font-bold tracking-widest uppercase mb-3" style={{ color: 'rgba(255,255,255,0.5)' }}>Tools we work with</p>
                   <p className="text-sm font-medium" style={{ color: 'rgba(255,255,255,0.75)' }}>
-                    SQL Account · Xero · Bukku · Google Sheets · Make · Zapier · Power BI
+                    SQL Account · AutoCount · Xero · Bukku · Google Sheets · Microsoft Excel · Google Apps Script
                   </p>
                 </div>
               </div>
