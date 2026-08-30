@@ -16,7 +16,6 @@ export default function Footer() {
 
           {/* Links */}
           <div>
-            <p className="text-sm font-bold mb-4" style={{ color: '#FFDA1A' }}>Pages</p>
             <div className="flex flex-col gap-2">
               {[['/', 'Home'], ['/services', 'Services'], ['/blog', 'Blog']].map(([href, label]) => (
                 <a key={href} href={href} className="text-sm hover:text-white transition" style={{ color: '#999' }}>{label}</a>
