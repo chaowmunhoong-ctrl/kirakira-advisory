@@ -81,7 +81,7 @@ export default function ServicesPage() {
           <div className="flex flex-col lg:flex-row items-center gap-12">
             {/* Left — text */}
             <div className="lg:w-1/2 text-center lg:text-left">
-              <p className="badge-in text-xs font-bold tracking-widest uppercase mb-5" style={{ color: '#FFDA1A', opacity: 0 }}>Our Services</p>
+              <p className="badge-in text-sm font-bold tracking-widest uppercase mb-5" style={{ color: '#FFDA1A', opacity: 0 }}>Our Services</p>
               <h1 className="fade-up text-5xl sm:text-6xl font-extrabold text-white leading-tight mb-6" style={{ opacity: 0, animationDelay: '0.1s' }}>Solutions Built<br/>for Accountants</h1>
               <p className="fade-up text-lg sm:text-xl leading-relaxed" style={{ color: 'rgba(255,255,255,0.82)', opacity: 0, animationDelay: '0.3s' }}>
                 Every service we offer is designed around one goal: helping accounting professionals spend less time on the routine and more time on the work that actually matters.
