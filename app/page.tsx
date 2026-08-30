@@ -1,7 +1,7 @@
 'use client'
 import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
-import AutomationIcon from './components/AutomationIcon'
+import WorkflowIcon from './components/WorkflowIcon'
 
 /* ── Scroll-reveal hook ── */
 function useReveal() {
@@ -110,7 +110,7 @@ export default function Home() {
 
             {/* Right — animated automation icon + stats */}
             <div className="lg:w-1/2 w-full fade-up" style={{ animationDelay: '0.4s', opacity: 0 }}>
-              <AutomationIcon />
+              <WorkflowIcon />
               <div className="grid grid-cols-3 gap-4 mt-8">
                 <StatCard value={80}  suffix="%" label="Less manual work" delay="0s" />
                 <StatCard value={3}   suffix="×" label="Faster close"     delay="0.15s" />
