@@ -34,8 +34,11 @@ export default function Footer() {
         </div>
 
         <div className="border-t pt-6" style={{ borderColor: '#222' }}>
-          <p className="text-xs text-center" style={{ color: '#555' }}>
-            &copy; {new Date().getFullYear()} Kirakira Advisory. All rights reserved.
+          <p className="text-xs text-center mb-1" style={{ color: '#555' }}>
+            Kirakira Advisory (202603228882). All rights reserved.
+          </p>
+          <p className="text-xs text-center" style={{ color: '#444' }}>
+            &copy; {new Date().getFullYear()} Kirakira Advisory.
           </p>
         </div>
       </div>
