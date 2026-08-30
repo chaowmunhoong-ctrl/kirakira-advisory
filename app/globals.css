@@ -14,5 +14,32 @@ body {
   from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-
 .fade-up { animation: fadeUp 0.6s ease forwards; }
+
+/* Ken Burns zoom on hero image */
+@keyframes kenBurns {
+  from { transform: scale(1);    transform-origin: center center; }
+  to   { transform: scale(1.08); transform-origin: 60% 40%; }
+}
+.hero-ken-burns {
+  animation: kenBurns 8s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+/* Floating badge animation */
+@keyframes floatUp {
+  0%   { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.float-in-1 { animation: floatUp 0.7s ease forwards 0.2s; opacity: 0; }
+.float-in-2 { animation: floatUp 0.7s ease forwards 0.5s; opacity: 0; }
+.float-in-3 { animation: floatUp 0.7s ease forwards 0.8s; opacity: 0; }
+
+/* Gentle float loop for stat badges */
+@keyframes floatLoop {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+.float-loop-1 { animation: floatLoop 4s ease-in-out infinite; }
+.float-loop-2 { animation: floatLoop 4s ease-in-out infinite 1s; }
+.float-loop-3 { animation: floatLoop 4s ease-in-out infinite 2s; }
