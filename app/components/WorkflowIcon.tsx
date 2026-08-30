@@ -1,5 +1,5 @@
 export default function WorkflowIcon() {
-  const cx = 240, cy = 152
+  const cx = 240, cy = 158
   // 6 tools placed around the hub
   const tools = [
     { angle: -90, name: 'SQL Account', short: 'SQL',    color: '#FFDA1A' },
@@ -9,11 +9,11 @@ export default function WorkflowIcon() {
     { angle: 150, name: 'Sheets',      short: 'SHEETS', color: '#34a853' },
     { angle: 210, name: 'Excel',       short: 'EXCEL',  color: '#217346' },
   ]
-  const R = 108 // orbit radius
+  const R = 128 // orbit radius
 
   return (
     <div className="flex items-center justify-center w-full select-none">
-      <svg viewBox="0 0 480 300" width="100%" style={{ maxWidth: 480 }} xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <svg viewBox="0 0 480 320" width="100%" style={{ maxWidth: 560 }} xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <defs>
           <style>{`
             /* spoke packet travel toward center */
@@ -39,12 +39,12 @@ export default function WorkflowIcon() {
             /* hub spin ring */
             @keyframes wf-spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
             @keyframes wf-spinr{from{transform:rotate(0)}to{transform:rotate(-360deg)}}
-            .wf-r1{animation:wf-spin  5s linear infinite;transform-origin:${cx}px ${cy}px;will-change:transform}
-            .wf-r2{animation:wf-spinr 8s linear infinite;transform-origin:${cx}px ${cy}px;will-change:transform}
+            .wf-r1{animation:wf-spin  5s linear infinite;transform-origin:240px 158px;will-change:transform}
+            .wf-r2{animation:wf-spinr 8s linear infinite;transform-origin:240px 158px;will-change:transform}
 
             /* hub core pulse */
             @keyframes wf-core{0%,100%{transform:scale(1);opacity:.9}50%{transform:scale(1.12);opacity:1}}
-            .wf-core{animation:wf-core 1.8s ease-in-out infinite;transform-origin:${cx}px ${cy}px;will-change:transform,opacity}
+            .wf-core{animation:wf-core 1.8s ease-in-out infinite;transform-origin:240px 158px;will-change:transform,opacity}
 
             /* tool node float */
             @keyframes wf-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
@@ -61,9 +61,9 @@ export default function WorkflowIcon() {
 
             /* output pulses from hub */
             @keyframes wf-out{0%{transform:scale(1);opacity:.7}100%{transform:scale(2.6);opacity:0}}
-            .wf-out{animation:wf-out 2s ease-out infinite;transform-origin:${cx}px ${cy}px;will-change:transform,opacity}
-            .wf-out2{animation:wf-out 2s ease-out infinite .66s;transform-origin:${cx}px ${cy}px;will-change:transform,opacity}
-            .wf-out3{animation:wf-out 2s ease-out infinite 1.33s;transform-origin:${cx}px ${cy}px;will-change:transform,opacity}
+            .wf-out{animation:wf-out 2s ease-out infinite;transform-origin:240px 158px;will-change:transform,opacity}
+            .wf-out2{animation:wf-out 2s ease-out infinite .66s;transform-origin:240px 158px;will-change:transform,opacity}
+            .wf-out3{animation:wf-out 2s ease-out infinite 1.33s;transform-origin:240px 158px;will-change:transform,opacity}
           `}</style>
           <radialGradient id="wf-hub" cx="50%" cy="50%" r="50%">
             <stop offset="0%" stopColor="#1e5fc4"/>
@@ -86,9 +86,9 @@ export default function WorkflowIcon() {
         <circle cx={cx} cy={cy} r={R} fill="none" stroke="rgba(255,218,26,.1)" strokeWidth="1" strokeDasharray="4 6"/>
 
         {/* ripple pulses from hub (processed output) */}
-        <circle className="wf-out"  cx={cx} cy={cy} r="38" fill="none" stroke="rgba(255,218,26,.35)" strokeWidth="2"/>
-        <circle className="wf-out2" cx={cx} cy={cy} r="38" fill="none" stroke="rgba(255,218,26,.35)" strokeWidth="2"/>
-        <circle className="wf-out3" cx={cx} cy={cy} r="38" fill="none" stroke="rgba(255,218,26,.35)" strokeWidth="2"/>
+        <circle className="wf-out"  cx={cx} cy={cy} r="48" fill="none" stroke="rgba(255,218,26,.35)" strokeWidth="2"/>
+        <circle className="wf-out2" cx={cx} cy={cy} r="48" fill="none" stroke="rgba(255,218,26,.35)" strokeWidth="2"/>
+        <circle className="wf-out3" cx={cx} cy={cy} r="48" fill="none" stroke="rgba(255,218,26,.35)" strokeWidth="2"/>
 
         {/* spokes + packets */}
         {tools.map((t, i) => {
@@ -150,29 +150,29 @@ export default function WorkflowIcon() {
         })}
 
         {/* hub body */}
-        <circle cx={cx} cy={cy} r="48" fill="url(#wf-hub)" stroke="rgba(255,218,26,.35)" strokeWidth="2.5"/>
+        <circle cx={cx} cy={cy} r="58" fill="url(#wf-hub)" stroke="rgba(255,218,26,.35)" strokeWidth="2.5"/>
 
         {/* hub spinning tick ring */}
         <g className="wf-r1">
           {[0,40,80,120,160,200,240,280,320].map((deg, i) => {
             const rad2 = (deg * Math.PI) / 180
-            const x1 = cx + 32 * Math.cos(rad2), y1 = cy + 32 * Math.sin(rad2)
-            const x2 = cx + 43 * Math.cos(rad2), y2 = cy + 43 * Math.sin(rad2)
+            const x1 = cx + 40 * Math.cos(rad2), y1 = cy + 40 * Math.sin(rad2)
+            const x2 = cx + 53 * Math.cos(rad2), y2 = cy + 53 * Math.sin(rad2)
             return <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#FFDA1A" strokeWidth="2.5" strokeLinecap="round" opacity=".6"/>
           })}
         </g>
 
         {/* inner dark ring */}
-        <circle cx={cx} cy={cy} r="22" fill="#001540" stroke="rgba(255,218,26,.3)" strokeWidth="1.5"/>
+        <circle cx={cx} cy={cy} r="28" fill="#001540" stroke="rgba(255,218,26,.3)" strokeWidth="1.5"/>
 
         {/* core "A" for Automate */}
         <g className="wf-core">
-          <text x={cx} y={cy + 7} textAnchor="middle" fontSize="20" fontWeight="900"
+          <text x={cx} y={cy + 9} textAnchor="middle" fontSize="26" fontWeight="900"
             fill="#FFDA1A" style={{ fontFamily: 'system-ui,sans-serif' }}>A</text>
         </g>
 
         {/* label below */}
-        <text x={cx} y={cy + 76} textAnchor="middle" fontSize="8" fontWeight="700"
+        <text x={cx} y={cy + 90} textAnchor="middle" fontSize="8" fontWeight="700"
           fill="rgba(255,218,26,.55)" letterSpacing="2" style={{ fontFamily: 'system-ui,sans-serif' }}>AUTOMATE · INTEGRATE</text>
 
       </svg>
