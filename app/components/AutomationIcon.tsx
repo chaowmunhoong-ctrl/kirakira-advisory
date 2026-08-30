@@ -1,176 +1,189 @@
 export default function AutomationIcon() {
   return (
-    <div className="flex items-center justify-center w-full">
+    <div className="flex items-center justify-center w-full select-none">
       <svg
-        viewBox="0 0 420 420"
+        viewBox="0 0 480 480"
         width="100%"
-        style={{ maxWidth: 400 }}
+        style={{ maxWidth: 440 }}
         xmlns="http://www.w3.org/2000/svg"
         aria-hidden="true"
       >
         <defs>
-          {/* Flowing dot along path */}
+          {/* Glows */}
+          <filter id="glow-yellow" x="-40%" y="-40%" width="180%" height="180%">
+            <feGaussianBlur stdDeviation="6" result="blur" />
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+          <filter id="glow-blue" x="-40%" y="-40%" width="180%" height="180%">
+            <feGaussianBlur stdDeviation="8" result="blur" />
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+          <filter id="glow-soft" x="-60%" y="-60%" width="220%" height="220%">
+            <feGaussianBlur stdDeviation="12" result="blur" />
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+
+          {/* Gradients */}
+          <radialGradient id="core-grad" cx="50%" cy="50%" r="50%">
+            <stop offset="0%"   stopColor="#FFDA1A" stopOpacity="0.35"/>
+            <stop offset="100%" stopColor="#0051BA" stopOpacity="0"/>
+          </radialGradient>
+          <linearGradient id="ring-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%"   stopColor="#FFDA1A"/>
+            <stop offset="50%"  stopColor="#fff" stopOpacity="0.3"/>
+            <stop offset="100%" stopColor="#FFDA1A" stopOpacity="0"/>
+          </linearGradient>
+          <radialGradient id="node-grad" cx="50%" cy="50%" r="50%">
+            <stop offset="0%"   stopColor="#1a6fd4"/>
+            <stop offset="100%" stopColor="#003080"/>
+          </radialGradient>
+
+          {/* Orbit paths for animateMotion */}
+          <path id="orbit1" d="M240,240 m-130,0 a130,130 0 1,1 260,0 a130,130 0 1,1 -260,0" fill="none"/>
+          <path id="orbit2" d="M240,240 m-130,0 a130,130 0 1,0 260,0 a130,130 0 1,0 -260,0" fill="none"/>
+
           <style>{`
-            @keyframes spinGear {
-              from { transform: rotate(0deg); }
-              to   { transform: rotate(360deg); }
+            @keyframes spinCW  { from{transform:rotate(0deg)}  to{transform:rotate(360deg)} }
+            @keyframes spinCCW { from{transform:rotate(0deg)}  to{transform:rotate(-360deg)} }
+            @keyframes pulseRing {
+              0%,100%{opacity:.18;transform:scale(1)}
+              50%    {opacity:.45;transform:scale(1.06)}
             }
-            @keyframes spinGearR {
-              from { transform: rotate(0deg); }
-              to   { transform: rotate(-360deg); }
+            @keyframes corePulse {
+              0%,100%{opacity:.5}
+              50%    {opacity:1}
             }
-            @keyframes pulse {
-              0%, 100% { opacity: 0.15; r: 54; }
-              50%       { opacity: 0.35; r: 66; }
+            @keyframes blink {
+              0%,100%{opacity:1} 50%{opacity:.3}
             }
-            @keyframes pulse2 {
-              0%, 100% { opacity: 0.08; r: 76; }
-              50%       { opacity: 0.22; r: 90; }
+            @keyframes particleRise {
+              0%  {transform:translateY(0)  scale(1);   opacity:.9}
+              100%{transform:translateY(-70px) scale(0); opacity:0}
             }
-            @keyframes dotFlow1 {
-              0%   { offset-distance: 0%;   opacity: 0; }
-              10%  { opacity: 1; }
-              90%  { opacity: 1; }
-              100% { offset-distance: 100%; opacity: 0; }
+            @keyframes dashFlow {
+              to{stroke-dashoffset:-40}
             }
-            @keyframes dotFlow2 {
-              0%   { offset-distance: 0%;   opacity: 0; }
-              10%  { opacity: 1; }
-              90%  { opacity: 1; }
-              100% { offset-distance: 100%; opacity: 0; }
+            @keyframes nodeGlow {
+              0%,100%{filter:drop-shadow(0 0 4px #FFDA1A)}
+              50%    {filter:drop-shadow(0 0 14px #FFDA1A)}
             }
-            @keyframes dotFlow3 {
-              0%   { offset-distance: 0%;   opacity: 0; }
-              10%  { opacity: 1; }
-              90%  { opacity: 1; }
-              100% { offset-distance: 100%; opacity: 0; }
-            }
-            @keyframes dotFlow4 {
-              0%   { offset-distance: 0%;   opacity: 0; }
-              10%  { opacity: 1; }
-              90%  { opacity: 1; }
-              100% { offset-distance: 100%; opacity: 0; }
-            }
-            @keyframes iconPop {
-              0%, 100% { transform: scale(1); }
-              50%       { transform: scale(1.08); }
-            }
-            @keyframes labelFade {
-              0%, 100% { opacity: 0.7; }
-              50%       { opacity: 1; }
-            }
-
-            .gear-main { transform-origin: 210px 210px; animation: spinGear 8s linear infinite; }
-            .gear-small { transform-origin: 210px 210px; animation: spinGearR 5s linear infinite; }
-
-            .pulse-ring-1 { transform-origin: 210px 210px; animation: pulse 3s ease-in-out infinite; }
-            .pulse-ring-2 { transform-origin: 210px 210px; animation: pulse2 3s ease-in-out infinite 0.8s; }
-
-            .dot1 { offset-path: path('M210,210 L100,110'); animation: dotFlow1 2s linear infinite; }
-            .dot2 { offset-path: path('M210,210 L320,110'); animation: dotFlow2 2s linear infinite 0.5s; }
-            .dot3 { offset-path: path('M210,210 L100,310'); animation: dotFlow3 2s linear infinite 1s; }
-            .dot4 { offset-path: path('M210,210 L320,310'); animation: dotFlow4 2s linear infinite 1.5s; }
-
-            .icon-tl { transform-origin: 100px 110px; animation: iconPop 4s ease-in-out infinite; }
-            .icon-tr { transform-origin: 320px 110px; animation: iconPop 4s ease-in-out infinite 1s; }
-            .icon-bl { transform-origin: 100px 310px; animation: iconPop 4s ease-in-out infinite 2s; }
-            .icon-br { transform-origin: 320px 310px; animation: iconPop 4s ease-in-out infinite 3s; }
-
-            .lbl { animation: labelFade 4s ease-in-out infinite; }
+            .ring-cw  {transform-origin:240px 240px; animation:spinCW  12s linear infinite}
+            .ring-ccw {transform-origin:240px 240px; animation:spinCCW 18s linear infinite}
+            .ring-cw2 {transform-origin:240px 240px; animation:spinCW  8s linear infinite}
+            .pulse1   {transform-origin:240px 240px; animation:pulseRing 3s ease-in-out infinite}
+            .pulse2   {transform-origin:240px 240px; animation:pulseRing 3s ease-in-out infinite 1s}
+            .pulse3   {transform-origin:240px 240px; animation:pulseRing 3s ease-in-out infinite 2s}
+            .core-glow{animation:corePulse 2.5s ease-in-out infinite}
+            .dash1 {stroke-dasharray:12 8; animation:dashFlow 1.4s linear infinite}
+            .dash2 {stroke-dasharray:12 8; animation:dashFlow 1.4s linear infinite .35s}
+            .dash3 {stroke-dasharray:12 8; animation:dashFlow 1.4s linear infinite .7s}
+            .dash4 {stroke-dasharray:12 8; animation:dashFlow 1.4s linear infinite 1.05s}
+            .node-icon{animation:nodeGlow 3s ease-in-out infinite}
+            .p1{animation:particleRise 2.2s ease-out infinite}
+            .p2{animation:particleRise 2.2s ease-out infinite .55s}
+            .p3{animation:particleRise 2.2s ease-out infinite 1.1s}
+            .p4{animation:particleRise 2.2s ease-out infinite 1.65s}
           `}</style>
         </defs>
 
-        {/* Pulse rings behind gear */}
-        <circle className="pulse-ring-1" cx="210" cy="210" r="54" fill="none" stroke="#FFDA1A" strokeWidth="2" />
-        <circle className="pulse-ring-2" cx="210" cy="210" r="76" fill="none" stroke="#FFDA1A" strokeWidth="1" />
+        {/* ── Background ambient glow ── */}
+        <circle cx="240" cy="240" r="190" fill="url(#core-grad)" />
 
-        {/* Connection lines */}
-        <line x1="210" y1="210" x2="100" y2="110" stroke="rgba(255,218,26,0.35)" strokeWidth="1.5" strokeDasharray="6 4" />
-        <line x1="210" y1="210" x2="320" y2="110" stroke="rgba(255,218,26,0.35)" strokeWidth="1.5" strokeDasharray="6 4" />
-        <line x1="210" y1="210" x2="100" y2="310" stroke="rgba(255,218,26,0.35)" strokeWidth="1.5" strokeDasharray="6 4" />
-        <line x1="210" y1="210" x2="320" y2="310" stroke="rgba(255,218,26,0.35)" strokeWidth="1.5" strokeDasharray="6 4" />
+        {/* ── Pulse rings ── */}
+        <circle className="pulse1" cx="240" cy="240" r="80"  fill="none" stroke="#FFDA1A" strokeWidth="1.5" opacity=".18"/>
+        <circle className="pulse2" cx="240" cy="240" r="110" fill="none" stroke="#FFDA1A" strokeWidth="1"   opacity=".12"/>
+        <circle className="pulse3" cx="240" cy="240" r="140" fill="none" stroke="#FFDA1A" strokeWidth="0.8" opacity=".08"/>
 
-        {/* Flowing dots */}
-        <circle className="dot1" r="5" fill="#FFDA1A" />
-        <circle className="dot2" r="5" fill="#FFDA1A" />
-        <circle className="dot3" r="5" fill="#FFDA1A" />
-        <circle className="dot4" r="5" fill="#FFDA1A" />
+        {/* ── Orbit track ── */}
+        <circle cx="240" cy="240" r="130" fill="none" stroke="rgba(255,218,26,0.12)" strokeWidth="1" strokeDasharray="3 5"/>
 
-        {/* ── Main gear ── */}
-        <g className="gear-main">
-          <path
-            d="M210,170 a40,40 0 1,1 -0.01,0 Z
-               M228,172 l6,-14 l-8,-4 l-6,14
-               M248,192 l14,-6 l-4,-8 l-14,6
-               M248,228 l14,6 l4,-8 l-14,-6
-               M228,248 l6,14 l8,-4 l-6,-14
-               M192,248 l-6,14 l8,4 l6,-14
-               M172,228 l-14,6 l4,8 l14,-6
-               M172,192 l-14,-6 l-4,8 l14,6
-               M192,172 l-6,-14 l-8,4 l6,14"
-            fill="none"
-          />
-          {/* Gear teeth as rect blocks */}
-          {[0,45,90,135,180,225,270,315].map((angle, i) => (
-            <rect
-              key={i}
-              x="204" y="162"
-              width="12" height="16"
-              rx="3"
-              fill="#FFDA1A"
-              style={{ transformOrigin: '210px 210px', transform: `rotate(${angle}deg)` }}
-            />
-          ))}
-          <circle cx="210" cy="210" r="38" fill="#0051BA" stroke="#FFDA1A" strokeWidth="3" />
-          <circle cx="210" cy="210" r="28" fill="rgba(255,218,26,0.12)" stroke="#FFDA1A" strokeWidth="1.5" />
-          <circle cx="210" cy="210" r="10" fill="#FFDA1A" />
+        {/* ── Dashed spoke lines (static) to node positions ── */}
+        {/* top */}
+        <line x1="240" y1="190" x2="240" y2="110" stroke="rgba(255,218,26,0.25)" strokeWidth="1.5" className="dash1"/>
+        {/* right */}
+        <line x1="290" y1="240" x2="370" y2="240" stroke="rgba(255,218,26,0.25)" strokeWidth="1.5" className="dash2"/>
+        {/* bottom */}
+        <line x1="240" y1="290" x2="240" y2="370" stroke="rgba(255,218,26,0.25)" strokeWidth="1.5" className="dash3"/>
+        {/* left */}
+        <line x1="190" y1="240" x2="110" y2="240" stroke="rgba(255,218,26,0.25)" strokeWidth="1.5" className="dash4"/>
+
+        {/* ── Outer rotating ring (dashed arc) ── */}
+        <g className="ring-cw">
+          <circle cx="240" cy="240" r="155" fill="none" stroke="rgba(255,218,26,0.3)" strokeWidth="1.5" strokeDasharray="20 12"/>
+        </g>
+        <g className="ring-ccw">
+          <circle cx="240" cy="240" r="168" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="1" strokeDasharray="8 18"/>
         </g>
 
-        {/* "AUTO" label in center */}
-        <text x="210" y="214" textAnchor="middle" fontSize="9" fontWeight="800" fill="#FFDA1A" letterSpacing="1" style={{ fontFamily: 'system-ui, sans-serif' }}>AUTO</text>
-
-        {/* ── Corner icons ── */}
-
-        {/* TL — Spreadsheet */}
-        <g className="icon-tl">
-          <rect x="68" y="78" width="64" height="64" rx="14" fill="#0051BA" stroke="#FFDA1A" strokeWidth="2" />
-          <rect x="80" y="92" width="40" height="6" rx="2" fill="#FFDA1A" />
-          <rect x="80" y="103" width="30" height="4" rx="2" fill="rgba(255,218,26,0.5)" />
-          <rect x="80" y="112" width="35" height="4" rx="2" fill="rgba(255,218,26,0.5)" />
-          <rect x="80" y="121" width="25" height="4" rx="2" fill="rgba(255,218,26,0.3)" />
-          <text x="100" y="138" textAnchor="middle" fontSize="9" fill="#FFDA1A" fontWeight="700" className="lbl" style={{ fontFamily: 'system-ui, sans-serif' }}>EXCEL</text>
+        {/* ── 4 Orbiting dot nodes on the track ── */}
+        {/* They sit at cardinal positions on orbit r=130; we animate a marker */}
+        <g className="ring-cw2">
+          {[0,90,180,270].map((deg, i) => {
+            const rad = (deg * Math.PI) / 180
+            const x = 240 + 130 * Math.cos(rad)
+            const y = 240 + 130 * Math.sin(rad)
+            return (
+              <circle key={i} cx={x} cy={y} r="6" fill="#FFDA1A" filter="url(#glow-yellow)" opacity="0.9"/>
+            )
+          })}
         </g>
 
-        {/* TR — Document */}
-        <g className="icon-tr">
-          <rect x="288" y="78" width="64" height="64" rx="14" fill="#0051BA" stroke="#FFDA1A" strokeWidth="2" />
-          <rect x="300" y="92" width="40" height="5" rx="2" fill="#FFDA1A" />
-          <rect x="300" y="102" width="28" height="4" rx="2" fill="rgba(255,218,26,0.5)" />
-          <rect x="300" y="111" width="35" height="4" rx="2" fill="rgba(255,218,26,0.5)" />
-          <rect x="300" y="120" width="20" height="4" rx="2" fill="rgba(255,218,26,0.3)" />
-          <text x="320" y="138" textAnchor="middle" fontSize="9" fill="#FFDA1A" fontWeight="700" className="lbl" style={{ fontFamily: 'system-ui, sans-serif' }}>REPORT</text>
+        {/* ── 4 Static node cards (fixed positions) ── */}
+
+        {/* TOP — Automation */}
+        <g className="node-icon">
+          <rect x="196" y="54" width="88" height="52" rx="12" fill="url(#node-grad)" stroke="#FFDA1A" strokeWidth="1.5"/>
+          <text x="240" y="74" textAnchor="middle" fontSize="18" fill="#FFDA1A" style={{fontFamily:'system-ui,sans-serif'}}>⚡</text>
+          <text x="240" y="96" textAnchor="middle" fontSize="8.5" fontWeight="700" fill="#fff" letterSpacing="0.5" style={{fontFamily:'system-ui,sans-serif'}}>AUTOMATE</text>
         </g>
 
-        {/* BL — Database */}
-        <g className="icon-bl">
-          <rect x="68" y="278" width="64" height="64" rx="14" fill="#0051BA" stroke="#FFDA1A" strokeWidth="2" />
-          <ellipse cx="100" cy="294" rx="18" ry="7" fill="#FFDA1A" />
-          <rect x="82" y="294" width="36" height="14" fill="#0051BA" />
-          <ellipse cx="100" cy="308" rx="18" ry="7" fill="none" stroke="#FFDA1A" strokeWidth="2" />
-          <rect x="82" y="308" width="36" height="10" fill="#0051BA" />
-          <ellipse cx="100" cy="318" rx="18" ry="7" fill="none" stroke="#FFDA1A" strokeWidth="2" />
-          <text x="100" y="338" textAnchor="middle" fontSize="9" fill="#FFDA1A" fontWeight="700" className="lbl" style={{ fontFamily: 'system-ui, sans-serif' }}>SQL</text>
+        {/* RIGHT — Reporting */}
+        <g className="node-icon" style={{animationDelay:'0.75s'}}>
+          <rect x="378" y="214" width="88" height="52" rx="12" fill="url(#node-grad)" stroke="#FFDA1A" strokeWidth="1.5"/>
+          <text x="422" y="234" textAnchor="middle" fontSize="18" fill="#FFDA1A" style={{fontFamily:'system-ui,sans-serif'}}>📊</text>
+          <text x="422" y="256" textAnchor="middle" fontSize="8.5" fontWeight="700" fill="#fff" letterSpacing="0.5" style={{fontFamily:'system-ui,sans-serif'}}>REPORTS</text>
         </g>
 
-        {/* BR — Cloud */}
-        <g className="icon-br">
-          <rect x="288" y="278" width="64" height="64" rx="14" fill="#0051BA" stroke="#FFDA1A" strokeWidth="2" />
-          <path d="M304,316 a12,12 0 0,1 6,-22 a10,10 0 0,1 20,0 a10,10 0 0,1 2,20 Z" fill="#FFDA1A" />
-          <line x1="308" y1="322" x2="308" y2="330" stroke="#FFDA1A" strokeWidth="2" strokeLinecap="round" />
-          <line x1="320" y1="320" x2="320" y2="330" stroke="#FFDA1A" strokeWidth="2" strokeLinecap="round" />
-          <line x1="332" y1="322" x2="332" y2="330" stroke="#FFDA1A" strokeWidth="2" strokeLinecap="round" />
-          <text x="320" y="338" textAnchor="middle" fontSize="9" fill="#FFDA1A" fontWeight="700" className="lbl" style={{ fontFamily: 'system-ui, sans-serif' }}>CLOUD</text>
+        {/* BOTTOM — Spreadsheets */}
+        <g className="node-icon" style={{animationDelay:'1.5s'}}>
+          <rect x="196" y="374" width="88" height="52" rx="12" fill="url(#node-grad)" stroke="#FFDA1A" strokeWidth="1.5"/>
+          <text x="240" y="394" textAnchor="middle" fontSize="18" fill="#FFDA1A" style={{fontFamily:'system-ui,sans-serif'}}>📋</text>
+          <text x="240" y="416" textAnchor="middle" fontSize="8.5" fontWeight="700" fill="#fff" letterSpacing="0.5" style={{fontFamily:'system-ui,sans-serif'}}>SHEETS</text>
         </g>
+
+        {/* LEFT — Integration */}
+        <g className="node-icon" style={{animationDelay:'2.25s'}}>
+          <rect x="14" y="214" width="88" height="52" rx="12" fill="url(#node-grad)" stroke="#FFDA1A" strokeWidth="1.5"/>
+          <text x="58" y="234" textAnchor="middle" fontSize="18" fill="#FFDA1A" style={{fontFamily:'system-ui,sans-serif'}}>🔗</text>
+          <text x="58" y="256" textAnchor="middle" fontSize="8.5" fontWeight="700" fill="#fff" letterSpacing="0.5" style={{fontFamily:'system-ui,sans-serif'}}>INTEGRATE</text>
+        </g>
+
+        {/* ── Central hub ── */}
+        {/* Outer glow ring */}
+        <circle cx="240" cy="240" r="62" fill="none" stroke="#FFDA1A" strokeWidth="2" opacity="0.3" filter="url(#glow-soft)"/>
+        {/* Hub body */}
+        <circle cx="240" cy="240" r="55" fill="#002060" stroke="#FFDA1A" strokeWidth="2.5"/>
+        {/* Inner rotating segmented ring */}
+        <g className="ring-cw" style={{transformOrigin:'240px 240px'}}>
+          {[0,60,120,180,240,300].map((deg, i) => {
+            const rad = (deg * Math.PI) / 180
+            const x1 = 240 + 38 * Math.cos(rad)
+            const y1 = 240 + 38 * Math.sin(rad)
+            const x2 = 240 + 50 * Math.cos(rad)
+            const y2 = 240 + 50 * Math.sin(rad)
+            return <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#FFDA1A" strokeWidth="3" strokeLinecap="round" opacity="0.8"/>
+          })}
+        </g>
+        {/* Inner circle */}
+        <circle cx="240" cy="240" r="30" fill="#001540" stroke="rgba(255,218,26,0.4)" strokeWidth="1.5"/>
+        {/* Lightning bolt */}
+        <text x="240" y="251" textAnchor="middle" fontSize="26" className="core-glow" filter="url(#glow-yellow)" style={{fontFamily:'system-ui,sans-serif'}}>⚡</text>
+
+        {/* ── Rising particles ── */}
+        <circle className="p1" cx="220" cy="240" r="3" fill="#FFDA1A" opacity="0.9"/>
+        <circle className="p2" cx="255" cy="245" r="2" fill="#fff"    opacity="0.7"/>
+        <circle className="p3" cx="235" cy="248" r="2.5" fill="#FFDA1A" opacity="0.8"/>
+        <circle className="p4" cx="248" cy="242" r="2" fill="#fff"    opacity="0.6"/>
 
       </svg>
     </div>
