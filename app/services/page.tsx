@@ -49,7 +49,7 @@ const services = [
     tools: 'Google Looker Studio · Google Sheets · Microsoft Excel · SQL Account',
   },
   {
-    icon: '📋',
+    icon: '📑',
     title: 'Spreadsheet Optimisation',
     tagline: 'Your spreadsheet is more powerful than you think.',
     description: 'Most accounting teams use a fraction of what spreadsheets can do. We redesign your existing spreadsheets and build new ones from scratch — with proper data validation, dynamic formulas, clean structures, and protected logic that will not break when someone makes a mistake.',

@@ -44,7 +44,7 @@ function useCountUp(target: number, suffix = '', duration = 1800) {
 const services = [
   { icon: '⚡', title: 'Workflow Automation', description: 'Eliminate repetitive data entry, reconciliations, and manual processes with smart automation built specifically for accounting workflows.' },
   { icon: '📊', title: 'Custom Reporting & Dashboards', description: 'Replace manually compiled reports with live dashboards that pull accurate data automatically — so you always have the numbers you need.' },
-  { icon: '📋', title: 'Spreadsheet Optimisation', description: 'We transform basic spreadsheets into professional, error-proof tools — cleaner models, smarter formulas, and templates that actually scale.' },
+  { icon: '📑', title: 'Spreadsheet Optimisation', description: 'We transform basic spreadsheets into professional, error-proof tools — cleaner models, smarter formulas, and templates that actually scale.' },
   { icon: '🔗', title: 'App & Software Integration', description: 'Connect your accounting software, payroll systems, and business tools so data flows between them automatically — no more manual transfers.' },
 ]
 

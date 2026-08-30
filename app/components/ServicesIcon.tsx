@@ -5,7 +5,7 @@ export default function ServicesIcon() {
     { angle: -90, label: 'AUTOMATE', sub: 'Workflows', color: '#FFDA1A',  icon: '⚡' },
     { angle:   0, label: 'REPORTS',  sub: 'Live data',  color: '#4caf50',  icon: '📊' },
     { angle:  90, label: 'INTEGRATE',sub: 'All tools',  color: '#2196f3',  icon: '🔗' },
-    { angle: 180, label: 'OPTIMISE', sub: 'Spreadsheets',color: '#ff9800', icon: '📋' },
+    { angle: 180, label: 'OPTIMISE', sub: 'Spreadsheets',color: '#ff9800', icon: '📑' },
   ]
 
   return (

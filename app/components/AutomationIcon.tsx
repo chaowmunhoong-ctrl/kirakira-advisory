@@ -147,7 +147,7 @@ export default function AutomationIcon() {
         {/* BOTTOM — Spreadsheets */}
         <g className="node-icon" style={{animationDelay:'1.5s'}}>
           <rect x="196" y="374" width="88" height="52" rx="12" fill="url(#node-grad)" stroke="#FFDA1A" strokeWidth="1.5"/>
-          <text x="240" y="394" textAnchor="middle" fontSize="18" fill="#FFDA1A" style={{fontFamily:'system-ui,sans-serif'}}>📋</text>
+          <text x="240" y="394" textAnchor="middle" fontSize="18" fill="#FFDA1A" style={{fontFamily:'system-ui,sans-serif'}}>📑</text>
           <text x="240" y="416" textAnchor="middle" fontSize="8.5" fontWeight="700" fill="#fff" letterSpacing="0.5" style={{fontFamily:'system-ui,sans-serif'}}>SHEETS</text>
         </g>
 
