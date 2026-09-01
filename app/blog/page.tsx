@@ -22,24 +22,28 @@ const posts = [
     date: '25 August 2026',
     title: '5 Accounting Tasks You Should Automate This Year',
     excerpt: 'Most accounting teams are still doing the same repetitive tasks they did five years ago. Here are five workflows that are straightforward to automate and will save your team hours every month.',
+    image: '/blog/automate-tasks.jpg',
   },
   {
     tag: 'Reporting',
     date: '12 August 2026',
     title: 'Why Your Excel Reports Are Slowing You Down',
     excerpt: 'Manual Excel reports are one of the biggest hidden time-sinks in an accounting team. Here is how to replace them with dashboards that update themselves.',
+    image: '/blog/excel-reports.jpg',
   },
   {
     tag: 'Spreadsheets',
     date: '1 August 2026',
     title: "The Accountant's Guide to Spreadsheet Best Practices",
     excerpt: 'A well-built spreadsheet is a business asset. A poorly built one is a liability waiting to cause problems. Here is how to tell the difference and how to fix it.',
+    image: '/blog/spreadsheet-guide.jpg',
   },
   {
     tag: 'Integration',
     date: '18 July 2026',
     title: 'How to Connect Your Accounting Software Without Spending a Fortune',
     excerpt: 'You do not need enterprise-grade middleware to integrate your business tools. Here are practical, affordable ways to get your systems talking to each other.',
+    image: '/blog/software-integration.jpg',
   },
 ]
 
