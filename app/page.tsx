@@ -102,9 +102,6 @@ export default function Home() {
                 <Link href="/services" className="btn-glow px-8 py-4 rounded font-bold text-base hover:opacity-90 transition" style={{ backgroundColor: '#FFDA1A', color: '#0051BA' }}>
                   Explore Services
                 </Link>
-                <Link href="/blog" className="px-8 py-4 rounded font-bold text-base border-2 border-white text-white hover:bg-white hover:text-blue-900 transition">
-                  Read Our Blog
-                </Link>
               </div>
             </div>
 
