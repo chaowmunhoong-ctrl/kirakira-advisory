@@ -64,6 +64,22 @@ const services = [
     outcomes: ['Eliminate duplicate data entry across systems', 'Real-time sync between accounting and operations tools', 'Automated data imports and exports', 'Custom connections for systems without native integration'],
     tools: 'SQL Account · Xero · Bukku · AutoCount · Google Workspace',
   },
+  {
+    icon: '📣',
+    title: 'Social Media Management',
+    tagline: 'Stay visible without lifting a finger.',
+    description: 'We manage your social media presence end-to-end — from writing and designing posts to scheduling, publishing, and tracking performance. This includes researching and writing SEO-optimised blog articles for your website, covering tax updates, compliance changes, and industry topics your target clients are already searching for. You focus on your clients; we make sure the right people find you.',
+    outcomes: ['Consistent posting across LinkedIn, Facebook, and Instagram', 'SEO-optimised blog articles written and published monthly', 'Professional content tailored for accounting and finance audiences', 'Monthly performance summary with reach and engagement data'],
+    tools: 'Meta Business Suite · LinkedIn · Buffer · Canva · Google Search Console',
+  },
+  {
+    icon: '🌐',
+    title: 'Website Management',
+    tagline: 'Your website, always fresh and working.',
+    description: 'Your website is often the first thing a potential client sees. We handle content updates, new page builds, performance monitoring, and technical maintenance so your site always reflects your current services and stays fast, secure, and visible on Google. No more chasing developers for small changes.',
+    outcomes: ['Content and service updates on request', 'Uptime and performance monitoring', 'Monthly SEO health check and ranking report', 'Fast turnaround on edits — typically within 1 business day'],
+    tools: 'Next.js · Vercel · Google Search Console · Google Analytics',
+  },
 ]
 
 export default function ServicesPage() {
