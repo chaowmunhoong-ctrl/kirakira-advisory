@@ -1,78 +1,80 @@
-'use client'
-import { useEffect } from 'react'
-import BlogIcon from '../components/BlogIcon'
+export const dynamic = 'force-dynamic';
 
-function useReveal() {
-  useEffect(() => {
-    const els = document.querySelectorAll('.reveal, .reveal-left, .reveal-right')
-    const io = new IntersectionObserver(
-      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible') }),
-      { threshold: 0.12 }
-    )
-    els.forEach(el => io.observe(el))
-    return () => io.disconnect()
-  }, [])
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Insights | Kirakira Advisory',
+  description: 'Practical tips on automation, reporting, spreadsheets, and software integration for accounting professionals.',
+  openGraph: {
+    title: 'Insights | Kirakira Advisory',
+    description: 'Practical tips on automation, reporting, spreadsheets, and software integration for accounting professionals.',
+    url: 'https://www.kirakiradvisory.com/blog',
+    siteName: 'Kirakira Advisory',
+    type: 'website',
+  },
+};
+
+interface BlogPost {
+  id: number;
+  caption: string;
+  imageFileId: string;
+  websitePublishedAt: string;
 }
 
-const WA_LINK = 'https://wa.me/60173384916'
+async function getPosts(): Promise<BlogPost[]> {
+  const url = process.env.BLOG_API_URL;
+  if (!url) return [];
+  try {
+    const res = await fetch(url, { cache: 'no-store' });
+    return await res.json();
+  } catch {
+    return [];
+  }
+}
 
-const posts = [
-  {
-    tag: 'Automation',
-    date: '25 August 2026',
-    title: '5 Accounting Tasks You Should Automate This Year',
-    excerpt: 'Most accounting teams are still doing the same repetitive tasks they did five years ago. Here are five workflows that are straightforward to automate and will save your team hours every month.',
-    image: '/blog/automate-tasks.jpg',
-  },
-  {
-    tag: 'Reporting',
-    date: '12 August 2026',
-    title: 'Why Your Excel Reports Are Slowing You Down',
-    excerpt: 'Manual Excel reports are one of the biggest hidden time-sinks in an accounting team. Here is how to replace them with dashboards that update themselves.',
-    image: '/blog/excel-reports.jpg',
-  },
-  {
-    tag: 'Spreadsheets',
-    date: '1 August 2026',
-    title: "The Accountant's Guide to Spreadsheet Best Practices",
-    excerpt: 'A well-built spreadsheet is a business asset. A poorly built one is a liability waiting to cause problems. Here is how to tell the difference and how to fix it.',
-    image: '/blog/spreadsheet-guide.jpg',
-  },
-  {
-    tag: 'Integration',
-    date: '18 July 2026',
-    title: 'How to Connect Your Accounting Software Without Spending a Fortune',
-    excerpt: 'You do not need enterprise-grade middleware to integrate your business tools. Here are practical, affordable ways to get your systems talking to each other.',
-    image: '/blog/software-integration.jpg',
-  },
-]
+function formatDate(iso: string) {
+  if (!iso) return '';
+  try {
+    return new Date(iso).toLocaleDateString('en-MY', {
+      day: 'numeric', month: 'long', year: 'numeric',
+    });
+  } catch { return ''; }
+}
 
-export default function BlogPage() {
-  useReveal()
+function excerpt(caption: string, max = 160) {
+  const lines = caption.split('\n').map(l => l.trim()).filter(Boolean);
+  const body = lines.slice(1).join(' ') || lines[0] || '';
+  return body.length > max ? body.slice(0, max) + '…' : body;
+}
+
+function postTitle(caption: string) {
+  return caption.split('\n').map(l => l.trim()).filter(Boolean)[0] || '';
+}
+
+const PER_PAGE = 9;
+
+export default async function BlogPage({ searchParams }: { searchParams: Promise<{ page?: string }> }) {
+  const { page: pageParam } = await searchParams;
+  const page = Math.max(1, parseInt(pageParam || '1', 10));
+  const allPosts = await getPosts();
+  const totalPages = Math.ceil(allPosts.length / PER_PAGE);
+  const posts = allPosts.slice((page - 1) * PER_PAGE, page * PER_PAGE);
 
   return (
     <div>
-
       {/* Hero */}
       <section style={{ backgroundColor: '#0051BA', position: 'relative', overflow: 'hidden' }} className="px-4 sm:px-6 pt-16 sm:pt-20 pb-16 sm:pb-20">
         <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle, rgba(255,218,26,0.08) 1px, transparent 1px)', backgroundSize: '32px 32px', pointerEvents: 'none' }} />
         <div className="shape-a absolute rounded-full opacity-10" style={{ width: 160, height: 160, backgroundColor: '#FFDA1A', top: '-30px', right: '6%' }} />
         <div className="shape-b absolute rounded-full opacity-10" style={{ width: 90, height: 90, backgroundColor: '#fff', bottom: '8%', left: '5%' }} />
-        <div className="max-w-6xl mx-auto relative">
-          <div className="flex flex-col lg:flex-row items-center gap-12">
-            {/* Left — text */}
-            <div className="lg:w-1/2 text-center lg:text-left">
-              <p className="badge-in text-sm font-bold tracking-widest uppercase mb-5" style={{ color: '#FFDA1A', opacity: 0 }}>Insights</p>
-              <h1 className="fade-up text-5xl sm:text-6xl font-extrabold text-white leading-tight mb-6" style={{ opacity: 0, animationDelay: '0.1s' }}>For Accounting<br/>Professionals</h1>
-              <p className="fade-up text-lg sm:text-xl" style={{ color: 'rgba(255,255,255,0.82)', opacity: 0, animationDelay: '0.3s' }}>
-                Practical tips on automation, reporting, spreadsheets, and software. No fluff.
-              </p>
-            </div>
-            {/* Right — icon */}
-            <div className="lg:w-1/2 w-full fade-up" style={{ animationDelay: '0.4s', opacity: 0 }}>
-              <BlogIcon />
-            </div>
-          </div>
+        <div className="max-w-6xl mx-auto relative text-center">
+          <p className="badge-in text-sm font-bold tracking-widest uppercase mb-5" style={{ color: '#FFDA1A', opacity: 0 }}>Insights</p>
+          <h1 className="fade-up text-5xl sm:text-6xl font-extrabold text-white leading-tight mb-6" style={{ opacity: 0, animationDelay: '0.1s' }}>
+            For Accounting<br />Professionals
+          </h1>
+          <p className="fade-up text-lg sm:text-xl max-w-2xl mx-auto" style={{ color: 'rgba(255,255,255,0.82)', opacity: 0, animationDelay: '0.3s' }}>
+            Practical tips on automation, reporting, spreadsheets, and software. No fluff.
+          </p>
         </div>
       </section>
 
@@ -80,33 +82,84 @@ export default function BlogPage() {
 
       {/* Posts */}
       <section className="py-16 px-4 sm:px-6 bg-white">
-        <div className="max-w-4xl mx-auto space-y-6">
-          {posts.map((post, i) => (
-            <article
-              key={post.title}
-              className={`reveal reveal-delay-${(i % 4) + 1} border rounded-xl p-6 sm:p-8 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer`}
-              style={{ borderColor: '#E5E7EB' }}
-            >
-              <div className="flex flex-wrap items-center gap-3 mb-3">
-                <span className="text-xs font-bold px-3 py-1 rounded-full" style={{ backgroundColor: '#FFDA1A', color: '#0051BA' }}>{post.tag}</span>
-                <span className="text-xs" style={{ color: '#999' }}>{post.date}</span>
-              </div>
-              <h2 className="text-2xl font-bold mb-3" style={{ color: '#111' }}>{post.title}</h2>
-              <p className="text-base leading-relaxed mb-4" style={{ color: '#555' }}>{post.excerpt}</p>
-              <span className="text-sm font-bold" style={{ color: '#0051BA' }}>Read more →</span>
-            </article>
-          ))}
+        <div className="max-w-6xl mx-auto">
+          {posts.length === 0 ? (
+            <div className="text-center py-20" style={{ color: '#666' }}>
+              <p className="text-lg">No posts yet. Check back soon.</p>
+            </div>
+          ) : (
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
+              {posts.map(post => (
+                <a
+                  key={post.id}
+                  href={`/blog/${post.id}`}
+                  className="rounded-2xl overflow-hidden border-2 flex flex-col hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+                  style={{ borderColor: '#E5E7EB' }}
+                >
+                  {post.imageFileId && (
+                    <div className="aspect-square overflow-hidden bg-gray-100">
+                      <img
+                        src={`https://drive.google.com/thumbnail?id=${post.imageFileId}&sz=w600`}
+                        alt={postTitle(post.caption)}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  )}
+                  <div className="p-6 flex flex-col flex-1">
+                    <p className="text-xs font-bold mb-3" style={{ color: '#0051BA' }}>
+                      {formatDate(post.websitePublishedAt)}
+                    </p>
+                    <p className="text-base font-bold mb-2 leading-snug" style={{ color: '#111' }}>
+                      {postTitle(post.caption)}
+                    </p>
+                    <p className="text-sm leading-relaxed flex-1" style={{ color: '#555' }}>
+                      {excerpt(post.caption)}
+                    </p>
+                    <span className="mt-4 text-sm font-bold" style={{ color: '#0051BA' }}>
+                      Read more →
+                    </span>
+                  </div>
+                </a>
+              ))}
+            </div>
+          )}
+
+          {/* Pagination */}
+          {totalPages > 1 && (
+            <div className="flex justify-center items-center gap-2 mt-14">
+              {page > 1 && (
+                <a href={`/blog?page=${page - 1}`} className="px-4 py-2 rounded-lg text-sm font-semibold border transition hover:opacity-80" style={{ borderColor: '#0051BA', color: '#0051BA' }}>
+                  ← Prev
+                </a>
+              )}
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map(p => (
+                <a
+                  key={p}
+                  href={`/blog?page=${p}`}
+                  className="w-9 h-9 flex items-center justify-center rounded-lg text-sm font-semibold transition"
+                  style={p === page ? { backgroundColor: '#0051BA', color: '#fff' } : { border: '1px solid #d1d5db', color: '#555' }}
+                >
+                  {p}
+                </a>
+              ))}
+              {page < totalPages && (
+                <a href={`/blog?page=${page + 1}`} className="px-4 py-2 rounded-lg text-sm font-semibold border transition hover:opacity-80" style={{ borderColor: '#0051BA', color: '#0051BA' }}>
+                  Next →
+                </a>
+              )}
+            </div>
+          )}
         </div>
       </section>
 
       {/* CTA */}
       <section className="cta-gradient py-20 px-4 sm:px-6 text-center" style={{ position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle, rgba(255,218,26,0.07) 1px, transparent 1px)', backgroundSize: '32px 32px', pointerEvents: 'none' }} />
-        <div className="max-w-2xl mx-auto relative reveal">
+        <div className="max-w-2xl mx-auto relative">
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">Want to talk through any of these?</h2>
           <p className="text-lg mb-10" style={{ color: 'rgba(255,255,255,0.8)' }}>Send us a message and we will be happy to discuss how it applies to your team.</p>
           <a
-            href={WA_LINK}
+            href="https://wa.me/60173384916"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 px-10 py-4 rounded font-bold text-lg hover:opacity-90 transition"
@@ -119,7 +172,6 @@ export default function BlogPage() {
           </a>
         </div>
       </section>
-
     </div>
-  )
+  );
 }
