@@ -36,10 +36,10 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   if (!post) return { title: 'Post Not Found | Kirakira Advisory' };
 
   const lines = post.caption.split('\n').map(l => l.trim()).filter(Boolean);
-  const titleLine = lines[0] || 'Insights | Kirakira Advisory';
-  const title = titleLine.length > 60 ? titleLine.slice(0, titleLine.lastIndexOf(' ', 57)) + '…' : titleLine;
-  const bodyLines = lines.slice(1);
-  const description = (bodyLines.length > 0 ? bodyLines : lines).join(' ').slice(0, 160);
+  const hasTitle = lines.length > 1 && lines[0].length <= 80;
+  const title = hasTitle ? lines[0] : lines.join(' ').slice(0, 80);
+  const bodyLines = hasTitle ? lines.slice(1) : lines;
+  const description = bodyLines.join(' ').slice(0, 160);
   const image = post.imageFileId
     ? `https://drive.google.com/thumbnail?id=${post.imageFileId}&sz=w1200`
     : undefined;
@@ -81,9 +81,10 @@ export default async function BlogPost({ params }: { params: Promise<{ id: strin
   }
 
   const lines = post.caption.split('\n').map(l => l.trim()).filter(Boolean);
-  const postTitle = lines[0] || '';
-  const bodyText = lines.slice(1).join('\n\n');
-  const paragraphs = (bodyText || post.caption).split(/\n\n+/).filter(Boolean);
+  const hasTitle = lines.length > 1 && lines[0].length <= 80;
+  const postTitle = hasTitle ? lines[0] : '';
+  const bodyLines = hasTitle ? lines.slice(1) : lines;
+  const paragraphs = bodyLines.join('\n\n').split(/\n\n+/).filter(Boolean);
   const postDescription = paragraphs.join(' ').slice(0, 160);
 
   const jsonLd = {
