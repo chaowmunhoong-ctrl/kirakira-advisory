@@ -120,11 +120,19 @@ export default function Home() {
             {/* Right — animated automation icon + stats */}
             <div className="lg:w-1/2 w-full fade-up" style={{ animationDelay: '0.4s', opacity: 0 }}>
               <SocialIcon />
-              <div className="mt-6 pt-5" style={{ borderTop: '1px solid rgba(255,255,255,0.15)' }}>
-                <p className="text-xs font-bold tracking-widest uppercase mb-2 text-center" style={{ color: 'rgba(255,255,255,0.5)' }}>Platforms we manage</p>
-                <p className="text-sm font-medium text-center" style={{ color: 'rgba(255,255,255,0.75)' }}>
-                  Instagram · Facebook · LinkedIn · TikTok · Blog · Google
-                </p>
+              <div className="mt-6 pt-5 flex flex-col sm:flex-row justify-center gap-4 sm:gap-8" style={{ borderTop: '1px solid rgba(255,255,255,0.15)' }}>
+                <div>
+                  <p className="text-xs font-bold tracking-widest uppercase mb-2 text-center" style={{ color: 'rgba(255,255,255,0.5)' }}>Platforms we manage</p>
+                  <p className="text-sm font-medium text-center" style={{ color: 'rgba(255,255,255,0.75)' }}>
+                    Instagram · Facebook · Blog
+                  </p>
+                </div>
+                <div>
+                  <p className="text-xs font-bold tracking-widest uppercase mb-2 text-center" style={{ color: 'rgba(255,255,255,0.5)' }}>Tools we automate</p>
+                  <p className="text-sm font-medium text-center" style={{ color: 'rgba(255,255,255,0.75)' }}>
+                    SQL Account · Xero · Google Sheets
+                  </p>
+                </div>
               </div>
             </div>
 
