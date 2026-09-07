@@ -4,7 +4,11 @@ export default function ServicesIcon() {
       <svg viewBox="0 0 480 320" width="100%" style={{ maxWidth: 520 }} xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <defs>
           <style>{`
-            /* ── SOCIAL: post card + engagement pulse ── */
+            /* ── card pulse ── */
+            @keyframes sv-card{0%,100%{opacity:.9}50%{opacity:1}}
+            .sv-card{animation:sv-card 3s ease-in-out infinite;will-change:opacity}
+
+            /* ── SOCIAL sub-icon: post + engagement ── */
             @keyframes sv-heart{0%,100%{transform:scale(1)}50%{transform:scale(1.35)}}
             .sv-heart{animation:sv-heart 1.6s ease-in-out infinite;transform-origin:center;will-change:transform}
             @keyframes sv-cmt{0%,100%{transform:scale(1);opacity:.85}50%{transform:scale(1.2);opacity:1}}
@@ -14,183 +18,113 @@ export default function ServicesIcon() {
             @keyframes sv-cap{0%,5%{transform:scaleX(0);opacity:0}25%,90%{transform:scaleX(1);opacity:1}100%{transform:scaleX(0);opacity:0}}
             .sv-cap{animation:sv-cap 3s ease-out infinite;transform-origin:left;will-change:transform,opacity}
 
-            /* ── REPORTS: bar grow ── */
-            @keyframes sv-bar{0%{transform:scaleY(.1)}55%{transform:scaleY(1)}75%{transform:scaleY(.85)}100%{transform:scaleY(1)}}
-            .sv-b1{animation:sv-bar 2.2s cubic-bezier(.34,1.4,.64,1) infinite 0s;transform-origin:bottom;will-change:transform}
-            .sv-b2{animation:sv-bar 2.2s cubic-bezier(.34,1.4,.64,1) infinite .25s;transform-origin:bottom;will-change:transform}
-            .sv-b3{animation:sv-bar 2.2s cubic-bezier(.34,1.4,.64,1) infinite .5s;transform-origin:bottom;will-change:transform}
-            .sv-b4{animation:sv-bar 2.2s cubic-bezier(.34,1.4,.64,1) infinite .75s;transform-origin:bottom;will-change:transform}
-            .sv-b5{animation:sv-bar 2.2s cubic-bezier(.34,1.4,.64,1) infinite 1s;transform-origin:bottom;will-change:transform}
-            @keyframes sv-line{0%{transform:scaleX(0)}60%{transform:scaleX(1)}100%{transform:scaleX(1)}}
-            .sv-tl{animation:sv-line 2.2s ease-out infinite;transform-origin:left;will-change:transform}
+            /* ── WEBSITE sub-icon: browser + globe ── */
+            @keyframes sv-globe{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+            .sv-globe{animation:sv-globe 9s linear infinite;transform-origin:center;will-change:transform}
+            @keyframes sv-dot{0%,100%{opacity:.4}50%{opacity:1}}
+            .sv-dot1{animation:sv-dot 2s ease-in-out infinite;will-change:opacity}
+            .sv-dot2{animation:sv-dot 2s ease-in-out infinite .3s;will-change:opacity}
+            .sv-dot3{animation:sv-dot 2s ease-in-out infinite .6s;will-change:opacity}
 
-            /* ── INTEGRATE: packet travel ── */
-            @keyframes sv-pkt{0%{transform:translateX(0);opacity:0}10%{opacity:1}85%{opacity:1}100%{transform:translateX(72px);opacity:0}}
-            .sv-p1{animation:sv-pkt 1.8s ease-in-out infinite 0s;will-change:transform,opacity}
-            .sv-p2{animation:sv-pkt 1.8s ease-in-out infinite .6s;will-change:transform,opacity}
-            .sv-p3{animation:sv-pkt 1.8s ease-in-out infinite 1.2s;will-change:transform,opacity}
-            @keyframes sv-nod{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
-            .sv-nd{animation:sv-nod 2s ease-in-out infinite;will-change:transform}
-            .sv-nd2{animation:sv-nod 2s ease-in-out infinite .66s;will-change:transform}
-            .sv-nd3{animation:sv-nod 2s ease-in-out infinite 1.33s;will-change:transform}
-
-            /* ── OPTIMISE: row highlight sweep ── */
-            @keyframes sv-row{0%,8%{transform:translateY(0);opacity:0}15%{opacity:1}30%{opacity:1;transform:translateY(0)}45%{transform:translateY(18px);opacity:1}55%{transform:translateY(18px);opacity:0}56%{transform:translateY(0);opacity:0}100%{transform:translateY(0);opacity:0}}
-            .sv-hl{animation:sv-row 3s ease-in-out infinite;will-change:transform,opacity}
-            @keyframes sv-cell{0%,40%{transform:scaleX(0);opacity:0}60%,85%{transform:scaleX(1);opacity:1}95%,100%{transform:scaleX(0);opacity:0}}
-            .sv-c1{animation:sv-cell 2.4s ease-out infinite 0s;transform-origin:left;will-change:transform,opacity}
-            .sv-c2{animation:sv-cell 2.4s ease-out infinite .3s;transform-origin:left;will-change:transform,opacity}
-            .sv-c3{animation:sv-cell 2.4s ease-out infinite .6s;transform-origin:left;will-change:transform,opacity}
-
-            /* ── card pulse ── */
-            @keyframes sv-card{0%,100%{opacity:.9}50%{opacity:1}}
-            .sv-card{animation:sv-card 3s ease-in-out infinite;will-change:opacity}
-
-            /* ── connector line pulse ── */
+            /* ── divider dash flow ── */
             @keyframes sv-conn{0%,100%{opacity:.2}50%{opacity:.55}}
             .sv-conn{animation:sv-conn 2s ease-in-out infinite;will-change:opacity}
-            .sv-conn2{animation:sv-conn 2s ease-in-out infinite .5s;will-change:opacity}
-            .sv-conn3{animation:sv-conn 2s ease-in-out infinite 1s;will-change:opacity}
-            .sv-conn4{animation:sv-conn 2s ease-in-out infinite 1.5s;will-change:opacity}
+
+            /* ── EFFICIENCY tiles: staggered pulse ── */
+            @keyframes sv-tile{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+            .sv-t1{animation:sv-tile 2.4s ease-in-out infinite 0s;transform-origin:center;will-change:transform}
+            .sv-t2{animation:sv-tile 2.4s ease-in-out infinite .5s;transform-origin:center;will-change:transform}
+            .sv-t3{animation:sv-tile 2.4s ease-in-out infinite 1s;transform-origin:center;will-change:transform}
+            .sv-t4{animation:sv-tile 2.4s ease-in-out infinite 1.5s;transform-origin:center;will-change:transform}
+
+            /* ── center plus glow ── */
+            @keyframes sv-plus{0%,100%{opacity:.55;transform:scale(1)}50%{opacity:1;transform:scale(1.15)}}
+            .sv-plus{animation:sv-plus 2.4s ease-in-out infinite;transform-origin:center;will-change:transform,opacity}
           `}</style>
           <radialGradient id="sv-card-bg" cx="50%" cy="30%" r="70%">
             <stop offset="0%" stopColor="#1e5fc4"/>
             <stop offset="100%" stopColor="#001a50"/>
           </radialGradient>
-          <linearGradient id="sv-bar-g" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="#FFDA1A"/>
-            <stop offset="100%" stopColor="#e6c200"/>
-          </linearGradient>
         </defs>
 
-        {/* ── connector lines between cards ── */}
-        {/* horizontal top */}
-        <line className="sv-conn"  x1="198" y1="96"  x2="282" y2="96"  stroke="#FFDA1A" strokeWidth="2" strokeDasharray="5 4"/>
-        {/* horizontal bottom */}
-        <line className="sv-conn2" x1="198" y1="224" x2="282" y2="224" stroke="#FFDA1A" strokeWidth="2" strokeDasharray="5 4"/>
-        {/* vertical left */}
-        <line className="sv-conn3" x1="96"  y1="148" x2="96"  y2="172" stroke="#FFDA1A" strokeWidth="2" strokeDasharray="5 4"/>
-        {/* vertical right */}
-        <line className="sv-conn4" x1="384" y1="148" x2="384" y2="172" stroke="#FFDA1A" strokeWidth="2" strokeDasharray="5 4"/>
-
         {/* ════════════════════════════════
-            TOP-LEFT — SOCIAL
+            LEFT — VISIBILITY (Social + Website)
         ════════════════════════════════ */}
         <g className="sv-card">
-          <rect x="18" y="28" width="156" height="136" rx="18" fill="url(#sv-card-bg)" stroke="#e1306c" strokeWidth="2.5"/>
-          <text x="96" y="52" textAnchor="middle" fontSize="9" fontWeight="700" fill="#e1306c" letterSpacing="1.5" style={{ fontFamily: 'system-ui,sans-serif' }}>SOCIAL</text>
+          <rect x="20" y="20" width="200" height="280" rx="20" fill="url(#sv-card-bg)" stroke="#e1306c" strokeWidth="2.5"/>
+          <text x="120" y="48" textAnchor="middle" fontSize="10" fontWeight="700" fill="#e1306c" letterSpacing="2" style={{ fontFamily: 'system-ui,sans-serif' }}>VISIBILITY</text>
 
-          {/* post card */}
+          {/* — social post card — */}
           <g className="sv-postglow">
-            <rect x="52" y="64" width="88" height="46" rx="7" fill="#001540" stroke="rgba(255,218,26,.4)" strokeWidth="1.5"/>
-            {/* image placeholder: sun + mountains */}
-            <circle cx="66" cy="76" r="4" fill="#FFDA1A" opacity=".8"/>
-            <polyline points="56,102 78,84 92,96 104,80 132,102" fill="none" stroke="rgba(79,195,247,.6)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+            <rect x="48" y="60" width="144" height="56" rx="8" fill="#001540" stroke="rgba(255,218,26,.4)" strokeWidth="1.5"/>
+            <circle cx="66" cy="74" r="4" fill="#FFDA1A" opacity=".8"/>
+            <polyline points="56,104 84,84 102,98 120,80 168,104" fill="none" stroke="rgba(79,195,247,.6)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
           </g>
-          {/* caption lines */}
-          <rect className="sv-cap" x="52" y="116" width="70" height="4" rx="2" fill="rgba(255,255,255,.3)"/>
-          <rect className="sv-cap" x="52" y="124" width="46" height="4" rx="2" fill="rgba(255,255,255,.18)" style={{ animationDelay: '.2s' }}/>
+          <rect className="sv-cap" x="48" y="122" width="90" height="4" rx="2" fill="rgba(255,255,255,.3)"/>
+          <rect className="sv-cap" x="48" y="130" width="58" height="4" rx="2" fill="rgba(255,255,255,.18)" style={{ animationDelay: '.2s' }}/>
 
-          {/* engagement row */}
-          <g className="sv-heart" style={{ transformOrigin: '64px 140px' }}>
-            <circle cx="64" cy="140" r="9" fill="#e1306c"/>
-            <text x="64" y="143.5" textAnchor="middle" fontSize="9" style={{ fontFamily: 'system-ui,sans-serif' }}>❤</text>
+          <g className="sv-heart" style={{ transformOrigin: '60px 148px' }}>
+            <circle cx="60" cy="148" r="9" fill="#e1306c"/>
+            <text x="60" y="151.5" textAnchor="middle" fontSize="9" style={{ fontFamily: 'system-ui,sans-serif' }}>❤</text>
           </g>
-          <g className="sv-cmt" style={{ transformOrigin: '90px 140px' }}>
-            <circle cx="90" cy="140" r="9" fill="#4fc3f7"/>
-            <text x="90" y="143.5" textAnchor="middle" fontSize="8" fill="white" style={{ fontFamily: 'system-ui,sans-serif' }}>💬</text>
+          <g className="sv-cmt" style={{ transformOrigin: '86px 148px' }}>
+            <circle cx="86" cy="148" r="9" fill="#4fc3f7"/>
+            <text x="86" y="151.5" textAnchor="middle" fontSize="8" fill="white" style={{ fontFamily: 'system-ui,sans-serif' }}>💬</text>
           </g>
+          <text x="120" y="170" textAnchor="middle" fontSize="8" fontWeight="700" fill="rgba(225,48,108,.75)" letterSpacing="1" style={{ fontFamily: 'system-ui,sans-serif' }}>SOCIAL</text>
 
-          <text x="96" y="152" textAnchor="middle" fontSize="7" fill="rgba(255,255,255,.5)" style={{ fontFamily: 'system-ui,sans-serif' }}>Content & reach</text>
+          {/* divider */}
+          <line className="sv-conn" x1="40" y1="184" x2="200" y2="184" stroke="#FFDA1A" strokeWidth="1.5" strokeDasharray="4 5"/>
+
+          {/* — website browser card — */}
+          <rect x="52" y="198" width="136" height="72" rx="8" fill="#001540" stroke="rgba(79,195,247,.5)" strokeWidth="1.5"/>
+          <rect x="52" y="198" width="136" height="16" rx="8" fill="rgba(79,195,247,.15)"/>
+          <circle className="sv-dot1" cx="62" cy="206" r="2.2" fill="#e1306c"/>
+          <circle className="sv-dot2" cx="70" cy="206" r="2.2" fill="#FFDA1A"/>
+          <circle className="sv-dot3" cx="78" cy="206" r="2.2" fill="#4caf50"/>
+          <g className="sv-globe" style={{ transformOrigin: '120px 242px' }}>
+            <circle cx="120" cy="242" r="16" fill="none" stroke="#4fc3f7" strokeWidth="2"/>
+            <ellipse cx="120" cy="242" rx="7" ry="16" fill="none" stroke="#4fc3f7" strokeWidth="1.3" opacity=".7"/>
+            <line x1="104" y1="242" x2="136" y2="242" stroke="#4fc3f7" strokeWidth="1.3" opacity=".7"/>
+            <line x1="107" y1="233" x2="133" y2="233" stroke="#4fc3f7" strokeWidth="1" opacity=".5"/>
+            <line x1="107" y1="251" x2="133" y2="251" stroke="#4fc3f7" strokeWidth="1" opacity=".5"/>
+          </g>
+          <text x="120" y="284" textAnchor="middle" fontSize="8" fontWeight="700" fill="rgba(79,195,247,.75)" letterSpacing="1" style={{ fontFamily: 'system-ui,sans-serif' }}>WEBSITE</text>
+        </g>
+
+        {/* center plus */}
+        <g className="sv-plus" style={{ transformOrigin: '240px 160px' }}>
+          <circle cx="240" cy="160" r="18" fill="#0051BA" stroke="#FFDA1A" strokeWidth="2"/>
+          <text x="240" y="168" textAnchor="middle" fontSize="20" fontWeight="900" fill="#FFDA1A" style={{ fontFamily: 'system-ui,sans-serif' }}>+</text>
         </g>
 
         {/* ════════════════════════════════
-            TOP-RIGHT — REPORTS
+            RIGHT — EFFICIENCY (Automate · Report · Optimise · Integrate)
         ════════════════════════════════ */}
         <g className="sv-card">
-          <rect x="306" y="28" width="156" height="136" rx="18" fill="url(#sv-card-bg)" stroke="#4caf50" strokeWidth="2.5"/>
-          <text x="384" y="52" textAnchor="middle" fontSize="9" fontWeight="700" fill="#4caf50" letterSpacing="1.5" style={{ fontFamily: 'system-ui,sans-serif' }}>REPORTS</text>
+          <rect x="260" y="20" width="200" height="280" rx="20" fill="url(#sv-card-bg)" stroke="#4fc3f7" strokeWidth="2.5"/>
+          <text x="360" y="48" textAnchor="middle" fontSize="10" fontWeight="700" fill="#4fc3f7" letterSpacing="2" style={{ fontFamily: 'system-ui,sans-serif' }}>EFFICIENCY</text>
 
-          {/* bar chart */}
-          <g className="sv-b1"><rect x="326" y="70" width="14" height="50" rx="3" fill="url(#sv-bar-g)"/></g>
-          <g className="sv-b2"><rect x="346" y="82" width="14" height="38" rx="3" fill="url(#sv-bar-g)" opacity=".8"/></g>
-          <g className="sv-b3"><rect x="366" y="60" width="14" height="60" rx="3" fill="url(#sv-bar-g)"/></g>
-          <g className="sv-b4"><rect x="386" y="74" width="14" height="46" rx="3" fill="url(#sv-bar-g)" opacity=".8"/></g>
-          <g className="sv-b5"><rect x="406" y="66" width="14" height="54" rx="3" fill="url(#sv-bar-g)" opacity=".9"/></g>
-          {/* baseline */}
-          <line x1="322" y1="122" x2="428" y2="122" stroke="rgba(255,255,255,.2)" strokeWidth="1.5"/>
-          {/* trend line */}
-          <polyline className="sv-tl" points="333,110 353,100 373,88 393,96 413,80" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" opacity=".6"/>
-
-          <text x="384" y="152" textAnchor="middle" fontSize="7" fill="rgba(255,255,255,.5)" style={{ fontFamily: 'system-ui,sans-serif' }}>Live data</text>
-        </g>
-
-        {/* ════════════════════════════════
-            BOTTOM-LEFT — OPTIMISE
-        ════════════════════════════════ */}
-        <g className="sv-card">
-          <rect x="18" y="156" width="156" height="136" rx="18" fill="url(#sv-card-bg)" stroke="#ff9800" strokeWidth="2.5"/>
-          <text x="96" y="180" textAnchor="middle" fontSize="9" fontWeight="700" fill="#ff9800" letterSpacing="1.5" style={{ fontFamily: 'system-ui,sans-serif' }}>OPTIMISE</text>
-
-          {/* spreadsheet grid */}
-          {/* header row */}
-          <rect x="34" y="190" width="128" height="14" rx="3" fill="rgba(255,152,0,.25)"/>
-          <text x="42" y="201" fontSize="6.5" fontWeight="700" fill="#ff9800" style={{ fontFamily: 'system-ui,sans-serif' }}>ITEM</text>
-          <text x="94" y="201" fontSize="6.5" fontWeight="700" fill="#ff9800" style={{ fontFamily: 'system-ui,sans-serif' }}>VALUE</text>
-          <text x="136" y="201" fontSize="6.5" fontWeight="700" fill="#ff9800" style={{ fontFamily: 'system-ui,sans-serif' }}>STATUS</text>
-
-          {/* row highlight sweeping down */}
-          <rect className="sv-hl" x="34" y="206" width="128" height="14" rx="2" fill="rgba(255,152,0,.18)"/>
-
-          {/* data rows */}
-          {[206, 224, 242].map((y, ri) => (
-            <g key={ri}>
-              <rect x="34" y={y} width="128" height="14" rx="2" fill="none" stroke="rgba(255,255,255,.07)" strokeWidth="1"/>
-              <rect className={`sv-c${ri+1}`} x="36" y={y+3} width="46" height="8" rx="2" fill="rgba(255,255,255,.15)"/>
-              <rect className={`sv-c${ri+1}`} x="90" y={y+3} width="30" height="8" rx="2" fill="rgba(255,152,0,.3)"/>
-              <rect className={`sv-c${ri+1}`} x="132" y={y+3} width="26" height="8" rx="2" fill="rgba(76,175,80,.35)"/>
-            </g>
-          ))}
-
-          <text x="96" y="278" textAnchor="middle" fontSize="7" fill="rgba(255,255,255,.5)" style={{ fontFamily: 'system-ui,sans-serif' }}>Spreadsheets</text>
-        </g>
-
-        {/* ════════════════════════════════
-            BOTTOM-RIGHT — INTEGRATE
-        ════════════════════════════════ */}
-        <g className="sv-card">
-          <rect x="306" y="156" width="156" height="136" rx="18" fill="url(#sv-card-bg)" stroke="#4fc3f7" strokeWidth="2.5"/>
-          <text x="384" y="180" textAnchor="middle" fontSize="9" fontWeight="700" fill="#4fc3f7" letterSpacing="1.5" style={{ fontFamily: 'system-ui,sans-serif' }}>INTEGRATE</text>
-
-          {/* 3 nodes with connecting line and packets */}
-          {/* node boxes */}
-          <g className="sv-nd" style={{ transformOrigin: '330px 224px' }}>
-            <rect x="316" y="210" width="28" height="28" rx="7" fill="#001540" stroke="#4fc3f7" strokeWidth="2"/>
-            <text x="330" y="228" textAnchor="middle" fontSize="10" style={{ fontFamily: 'system-ui,sans-serif' }}>📊</text>
+          {/* 2x2 tile grid */}
+          <g className="sv-t1">
+            <rect x="284" y="66" width="80" height="80" rx="14" fill="#001540" stroke="#FFDA1A" strokeWidth="1.8"/>
+            <text x="324" y="116" textAnchor="middle" fontSize="26" style={{ fontFamily: 'system-ui,sans-serif' }}>⚡</text>
           </g>
-          <g className="sv-nd2" style={{ transformOrigin: '384px 218px' }}>
-            <rect x="370" y="204" width="28" height="28" rx="7" fill="#001540" stroke="#FFDA1A" strokeWidth="2"/>
-            <text x="384" y="222" textAnchor="middle" fontSize="10" style={{ fontFamily: 'system-ui,sans-serif' }}>⚡</text>
+          <g className="sv-t2">
+            <rect x="376" y="66" width="80" height="80" rx="14" fill="#001540" stroke="#4caf50" strokeWidth="1.8"/>
+            <text x="416" y="116" textAnchor="middle" fontSize="26" style={{ fontFamily: 'system-ui,sans-serif' }}>📊</text>
           </g>
-          <g className="sv-nd3" style={{ transformOrigin: '440px 224px' }}>
-            <rect x="426" y="210" width="28" height="28" rx="7" fill="#001540" stroke="#4caf50" strokeWidth="2"/>
-            <text x="440" y="228" textAnchor="middle" fontSize="10" style={{ fontFamily: 'system-ui,sans-serif' }}>🔗</text>
+          <g className="sv-t3">
+            <rect x="284" y="154" width="80" height="80" rx="14" fill="#001540" stroke="#ff9800" strokeWidth="1.8"/>
+            <text x="324" y="204" textAnchor="middle" fontSize="26" style={{ fontFamily: 'system-ui,sans-serif' }}>📑</text>
+          </g>
+          <g className="sv-t4">
+            <rect x="376" y="154" width="80" height="80" rx="14" fill="#001540" stroke="#4fc3f7" strokeWidth="1.8"/>
+            <text x="416" y="204" textAnchor="middle" fontSize="26" style={{ fontFamily: 'system-ui,sans-serif' }}>🔗</text>
           </g>
 
-          {/* connector track */}
-          <line x1="344" y1="224" x2="426" y2="224" stroke="rgba(79,195,247,.25)" strokeWidth="3" strokeLinecap="round"/>
-
-          {/* flowing packets */}
-          <g className="sv-p1"><circle cx="348" cy="224" r="5" fill="#4fc3f7" opacity=".9"/></g>
-          <g className="sv-p2"><circle cx="348" cy="224" r="5" fill="#FFDA1A" opacity=".85"/></g>
-          <g className="sv-p3"><circle cx="348" cy="224" r="5" fill="white" opacity=".6"/></g>
-
-          {/* label row */}
-          <text x="330" y="252" textAnchor="middle" fontSize="6" fill="rgba(79,195,247,.7)" style={{ fontFamily: 'system-ui,sans-serif' }}>SQL · Xero</text>
-          <text x="384" y="252" textAnchor="middle" fontSize="6" fill="rgba(255,218,26,.7)" style={{ fontFamily: 'system-ui,sans-serif' }}>AutoCount</text>
-          <text x="440" y="252" textAnchor="middle" fontSize="6" fill="rgba(76,175,80,.7)" style={{ fontFamily: 'system-ui,sans-serif' }}>Bukku</text>
-
-          <text x="384" y="278" textAnchor="middle" fontSize="7" fill="rgba(255,255,255,.5)" style={{ fontFamily: 'system-ui,sans-serif' }}>All tools</text>
+          <text x="360" y="260" textAnchor="middle" fontSize="8" fontWeight="700" fill="rgba(255,255,255,.5)" letterSpacing=".5" style={{ fontFamily: 'system-ui,sans-serif' }}>AUTOMATE · REPORT</text>
+          <text x="360" y="272" textAnchor="middle" fontSize="8" fontWeight="700" fill="rgba(255,255,255,.5)" letterSpacing=".5" style={{ fontFamily: 'system-ui,sans-serif' }}>OPTIMISE · INTEGRATE</text>
         </g>
 
       </svg>

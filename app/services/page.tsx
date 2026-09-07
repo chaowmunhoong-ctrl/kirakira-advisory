@@ -31,9 +31,15 @@ const WA_BTN = ({ label = 'WhatsApp Us', large = false }: { label?: string; larg
   </a>
 )
 
+const GROUP_LABELS: Record<string, string> = {
+  visibility: 'Grow Your Visibility',
+  efficiency: 'Run More Efficiently',
+}
+
 const services = [
   {
     icon: '📣',
+    group: 'visibility',
     title: 'Social Media Management',
     tagline: 'Stay visible without lifting a finger.',
     description: 'We manage your social media presence end-to-end — from writing and designing posts to scheduling, publishing, and tracking performance. This includes researching and writing SEO-optimised blog articles for your website, covering tax updates, compliance changes, and industry topics your target clients are already searching for. You focus on your clients; we make sure the right people find you.',
@@ -42,6 +48,7 @@ const services = [
   },
   {
     icon: '🌐',
+    group: 'visibility',
     title: 'Website Management',
     tagline: 'Your website, always fresh and working.',
     description: 'Your website is often the first thing a potential client sees. We handle content updates, new page builds, performance monitoring, and technical maintenance so your site always reflects your current services and stays fast, secure, and visible on Google. No more chasing developers for small changes.',
@@ -50,6 +57,7 @@ const services = [
   },
   {
     icon: '⚡',
+    group: 'efficiency',
     title: 'Workflow Automation',
     tagline: 'Eliminate the repetitive. Keep the meaningful.',
     description: 'We map your current accounting workflows and identify tasks that can be fully or partially automated — whether that is bank reconciliation, invoice processing, payroll data preparation, or month-end closing checklists. The result is a process that runs reliably in the background while your team focuses on higher-value work.',
@@ -58,6 +66,7 @@ const services = [
   },
   {
     icon: '📊',
+    group: 'efficiency',
     title: 'Custom Reporting & Dashboards',
     tagline: 'See what matters, when it matters.',
     description: 'We design and build management reports and dashboards that pull live data from your accounting system, spreadsheets, or databases. Instead of manually compiling figures every month, you get a report that updates itself — giving you and your clients real-time financial visibility without the extra work.',
@@ -66,6 +75,7 @@ const services = [
   },
   {
     icon: '📑',
+    group: 'efficiency',
     title: 'Spreadsheet Optimisation',
     tagline: 'Your spreadsheet is more powerful than you think.',
     description: 'Most accounting teams use a fraction of what spreadsheets can do. We redesign your existing spreadsheets and build new ones from scratch — with proper data validation, dynamic formulas, clean structures, and protected logic that will not break when someone makes a mistake.',
@@ -74,6 +84,7 @@ const services = [
   },
   {
     icon: '🔗',
+    group: 'efficiency',
     title: 'App & Software Integration',
     tagline: 'Stop copying data between systems.',
     description: 'If your team spends time manually moving data from one system to another, that is time and money wasted. We connect your accounting software, payroll systems, CRM, inventory tools, and other business apps so data flows automatically between them — eliminating duplicate entry and keeping everything in sync.',
@@ -115,34 +126,43 @@ export default function ServicesPage() {
 
       {/* Services */}
       <section className="py-16 px-4 sm:px-6 bg-white">
-        <div className="max-w-5xl mx-auto space-y-24">
+        <div className="max-w-5xl mx-auto">
           {services.map((s, i) => (
-            <div
-              key={s.title}
-              className={`flex flex-col ${i % 2 === 0 ? 'lg:flex-row reveal-left' : 'lg:flex-row-reverse reveal-right'} gap-12 items-start`}
-            >
-              {/* Left panel */}
-              <div className="lg:w-1/3 flex-shrink-0">
-                <div className="text-6xl mb-5 transition-transform duration-300 hover:scale-110 inline-block">{s.icon}</div>
-                <h2 className="text-2xl font-bold mb-2" style={{ color: '#0051BA' }}>{s.title}</h2>
-                <p className="text-sm font-semibold mb-5" style={{ color: '#888' }}>{s.tagline}</p>
-                <p className="text-xs font-bold uppercase mb-1 tracking-widest" style={{ color: '#aaa' }}>Tools we use</p>
-                <p className="text-sm leading-relaxed" style={{ color: '#666' }}>{s.tools}</p>
-              </div>
+            <div key={s.title}>
+              {(i === 0 || s.group !== services[i - 1].group) && (
+                <div className={`reveal ${i === 0 ? '' : 'mt-24'} mb-10 flex items-center gap-4`}>
+                  <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase flex-shrink-0" style={{ backgroundColor: '#0051BA', color: '#FFDA1A' }}>
+                    {GROUP_LABELS[s.group]}
+                  </span>
+                  <span className="h-px flex-1" style={{ backgroundColor: '#E5E7EB' }} />
+                </div>
+              )}
+              <div
+                className={`flex flex-col ${i % 2 === 0 ? 'lg:flex-row reveal-left' : 'lg:flex-row-reverse reveal-right'} gap-12 items-start ${i === services.length - 1 ? '' : 'mb-24'}`}
+              >
+                {/* Left panel */}
+                <div className="lg:w-1/3 flex-shrink-0">
+                  <div className="text-6xl mb-5 transition-transform duration-300 hover:scale-110 inline-block">{s.icon}</div>
+                  <h2 className="text-2xl font-bold mb-2" style={{ color: '#0051BA' }}>{s.title}</h2>
+                  <p className="text-sm font-semibold mb-5" style={{ color: '#888' }}>{s.tagline}</p>
+                  <p className="text-xs font-bold uppercase mb-1 tracking-widest" style={{ color: '#aaa' }}>Tools we use</p>
+                  <p className="text-sm leading-relaxed" style={{ color: '#666' }}>{s.tools}</p>
+                </div>
 
-              {/* Right panel */}
-              <div className="lg:w-2/3">
-                <p className="text-lg leading-relaxed mb-6" style={{ color: '#444' }}>{s.description}</p>
-                <div className="p-6 rounded-xl" style={{ backgroundColor: '#EEF4FF', borderLeft: '4px solid #0051BA' }}>
-                  <p className="text-sm font-bold mb-4" style={{ color: '#0051BA' }}>What you get</p>
-                  <ul className="space-y-3">
-                    {s.outcomes.map(o => (
-                      <li key={o} className="flex items-start gap-3 text-base" style={{ color: '#333' }}>
-                        <span className="flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold text-white mt-0.5" style={{ backgroundColor: '#0051BA' }}>✓</span>
-                        {o}
-                      </li>
-                    ))}
-                  </ul>
+                {/* Right panel */}
+                <div className="lg:w-2/3">
+                  <p className="text-lg leading-relaxed mb-6" style={{ color: '#444' }}>{s.description}</p>
+                  <div className="p-6 rounded-xl" style={{ backgroundColor: '#EEF4FF', borderLeft: '4px solid #0051BA' }}>
+                    <p className="text-sm font-bold mb-4" style={{ color: '#0051BA' }}>What you get</p>
+                    <ul className="space-y-3">
+                      {s.outcomes.map(o => (
+                        <li key={o} className="flex items-start gap-3 text-base" style={{ color: '#333' }}>
+                          <span className="flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold text-white mt-0.5" style={{ backgroundColor: '#0051BA' }}>✓</span>
+                          {o}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>

@@ -41,11 +41,23 @@ function useCountUp(target: number, suffix = '', duration = 1800) {
   return { ref, display: val + suffix }
 }
 
-const services = [
-  { icon: '📣', title: 'Social Media Management', description: 'End-to-end social media presence — content, scheduling, and SEO-optimised blog articles — so the right clients find you without you lifting a finger.' },
-  { icon: '⚡', title: 'Workflow Automation', description: 'Eliminate repetitive data entry, reconciliations, and manual processes with smart automation built specifically for accounting workflows.' },
-  { icon: '📊', title: 'Custom Reporting & Dashboards', description: 'Replace manually compiled reports with live dashboards that pull accurate data automatically — so you always have the numbers you need.' },
-  { icon: '🌐', title: 'Website Management', description: 'Content updates, performance monitoring, and technical maintenance so your website always reflects your firm and stays visible on Google.' },
+const serviceGroups = [
+  {
+    key: 'visibility',
+    label: 'Grow Your Visibility',
+    items: [
+      { icon: '📣', title: 'Social Media Management', description: 'End-to-end social media presence — content, scheduling, and SEO-optimised blog articles — so the right clients find you without you lifting a finger.' },
+      { icon: '🌐', title: 'Website Management', description: 'Content updates, performance monitoring, and technical maintenance so your website always reflects your firm and stays visible on Google.' },
+    ],
+  },
+  {
+    key: 'efficiency',
+    label: 'Run More Efficiently',
+    items: [
+      { icon: '⚡', title: 'Workflow Automation', description: 'Eliminate repetitive data entry, reconciliations, and manual processes with smart automation built specifically for accounting workflows.' },
+      { icon: '📊', title: 'Custom Reporting & Dashboards', description: 'Replace manually compiled reports with live dashboards that pull accurate data automatically — so you always have the numbers you need.' },
+    ],
+  },
 ]
 
 const whyUs = [
@@ -109,9 +121,9 @@ export default function Home() {
             <div className="lg:w-1/2 w-full fade-up" style={{ animationDelay: '0.4s', opacity: 0 }}>
               <SocialIcon />
               <div className="mt-6 pt-5" style={{ borderTop: '1px solid rgba(255,255,255,0.15)' }}>
-                <p className="text-xs font-bold tracking-widest uppercase mb-2 text-center" style={{ color: 'rgba(255,255,255,0.5)' }}>Tools we work with</p>
+                <p className="text-xs font-bold tracking-widest uppercase mb-2 text-center" style={{ color: 'rgba(255,255,255,0.5)' }}>Platforms we manage</p>
                 <p className="text-sm font-medium text-center" style={{ color: 'rgba(255,255,255,0.75)' }}>
-                  SQL Account · AutoCount · Xero · Bukku · Google Sheets · Microsoft Excel
+                  Instagram · Facebook · LinkedIn · TikTok · Blog · Google
                 </p>
               </div>
             </div>
@@ -133,16 +145,25 @@ export default function Home() {
               From building your firm's online presence to automating the busywork behind the scenes, we help accounting teams stay visible and measurably more efficient.
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {services.map((s, i) => (
-              <div
-                key={s.title}
-                className={`card-hover reveal reveal-delay-${i + 1} p-8 sm:p-10 rounded-xl border-2`}
-                style={{ borderColor: '#E5E7EB' }}
-              >
-                <div className="card-icon text-5xl mb-5">{s.icon}</div>
-                <h3 className="text-2xl font-bold mb-3" style={{ color: '#0051BA' }}>{s.title}</h3>
-                <p className="text-base leading-relaxed" style={{ color: '#555' }}>{s.description}</p>
+          <div className="space-y-12">
+            {serviceGroups.map((group, gi) => (
+              <div key={group.key}>
+                <p className="reveal text-xs font-bold tracking-widest uppercase mb-5" style={{ color: '#FFDA1A', textShadow: '0 0 0' }}>
+                  <span className="inline-block px-3 py-1 rounded-full" style={{ backgroundColor: '#0051BA', color: '#FFDA1A' }}>{group.label}</span>
+                </p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  {group.items.map((s, i) => (
+                    <div
+                      key={s.title}
+                      className={`card-hover reveal reveal-delay-${gi * 2 + i + 1} p-8 sm:p-10 rounded-xl border-2`}
+                      style={{ borderColor: '#E5E7EB' }}
+                    >
+                      <div className="card-icon text-5xl mb-5">{s.icon}</div>
+                      <h3 className="text-2xl font-bold mb-3" style={{ color: '#0051BA' }}>{s.title}</h3>
+                      <p className="text-base leading-relaxed" style={{ color: '#555' }}>{s.description}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
             ))}
           </div>
