@@ -4,10 +4,10 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Insights | Kirakira Advisory',
-  description: 'Practical tips on automation, reporting, spreadsheets, and software integration for accounting professionals.',
+  description: 'Practical tips on automation, social media management, and website design for accounting professionals.',
   openGraph: {
     title: 'Insights | Kirakira Advisory',
-    description: 'Practical tips on automation, reporting, spreadsheets, and software integration for accounting professionals.',
+    description: 'Practical tips on automation, social media management, and website design for accounting professionals.',
     url: 'https://www.kirakiradvisory.com/blog',
     siteName: 'Kirakira Advisory',
     type: 'website',
@@ -73,7 +73,7 @@ export default async function BlogPage({ searchParams }: { searchParams: Promise
             For Accounting<br />Professionals
           </h1>
           <p className="fade-up text-lg sm:text-xl max-w-2xl mx-auto" style={{ color: 'rgba(255,255,255,0.82)', opacity: 0, animationDelay: '0.3s' }}>
-            Practical tips on automation, reporting, spreadsheets, and software. No fluff.
+            Practical tips on automation, social media, and website design for accounting professionals. No fluff.
           </p>
         </div>
       </section>

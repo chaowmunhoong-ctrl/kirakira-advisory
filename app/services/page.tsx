@@ -32,32 +32,15 @@ const WA_BTN = ({ label = 'WhatsApp Us', large = false }: { label?: string; larg
 )
 
 const GROUP_LABELS: Record<string, string> = {
-  visibility: 'Grow Your Visibility',
-  efficiency: 'Run More Efficiently',
+  automation: '01 · Automation',
+  social: '02 · Social Media Management',
+  website: '03 · Website Design',
 }
 
 const services = [
   {
-    icon: '📣',
-    group: 'visibility',
-    title: 'Social Media Management',
-    tagline: 'Stay visible without lifting a finger.',
-    description: 'We manage your social media presence end-to-end — from writing and designing posts to scheduling, publishing, and tracking performance. This includes researching and writing SEO-optimised blog articles for your website, covering tax updates, compliance changes, and industry topics your target clients are already searching for. You focus on your clients; we make sure the right people find you.',
-    outcomes: ['Consistent posting across LinkedIn, Facebook, and Instagram', 'SEO-optimised blog articles written and published monthly', 'Professional content tailored for accounting and finance audiences', 'Monthly performance summary with reach and engagement data'],
-    tools: 'Meta Business Suite · LinkedIn · Buffer · Canva · Google Search Console',
-  },
-  {
-    icon: '🌐',
-    group: 'visibility',
-    title: 'Website Management',
-    tagline: 'Your website, always fresh and working.',
-    description: 'Your website is often the first thing a potential client sees. We handle content updates, new page builds, performance monitoring, and technical maintenance so your site always reflects your current services and stays fast, secure, and visible on Google. No more chasing developers for small changes.',
-    outcomes: ['Content and service updates on request', 'Uptime and performance monitoring', 'Monthly SEO health check and ranking report', 'Fast turnaround on edits — typically within 1 business day'],
-    tools: 'Next.js · Vercel · Google Search Console · Google Analytics',
-  },
-  {
     icon: '⚡',
-    group: 'efficiency',
+    group: 'automation',
     title: 'Workflow Automation',
     tagline: 'Eliminate the repetitive. Keep the meaningful.',
     description: 'We map your current accounting workflows and identify tasks that can be fully or partially automated — whether that is bank reconciliation, invoice processing, payroll data preparation, or month-end closing checklists. The result is a process that runs reliably in the background while your team focuses on higher-value work.',
@@ -66,7 +49,7 @@ const services = [
   },
   {
     icon: '📊',
-    group: 'efficiency',
+    group: 'automation',
     title: 'Custom Reporting & Dashboards',
     tagline: 'See what matters, when it matters.',
     description: 'We design and build management reports and dashboards that pull live data from your accounting system, spreadsheets, or databases. Instead of manually compiling figures every month, you get a report that updates itself — giving you and your clients real-time financial visibility without the extra work.',
@@ -75,7 +58,7 @@ const services = [
   },
   {
     icon: '📑',
-    group: 'efficiency',
+    group: 'automation',
     title: 'Spreadsheet Optimisation',
     tagline: 'Your spreadsheet is more powerful than you think.',
     description: 'Most accounting teams use a fraction of what spreadsheets can do. We redesign your existing spreadsheets and build new ones from scratch — with proper data validation, dynamic formulas, clean structures, and protected logic that will not break when someone makes a mistake.',
@@ -84,12 +67,30 @@ const services = [
   },
   {
     icon: '🔗',
-    group: 'efficiency',
+    group: 'automation',
     title: 'App & Software Integration',
     tagline: 'Stop copying data between systems.',
     description: 'If your team spends time manually moving data from one system to another, that is time and money wasted. We connect your accounting software, payroll systems, CRM, inventory tools, and other business apps so data flows automatically between them — eliminating duplicate entry and keeping everything in sync.',
     outcomes: ['Eliminate duplicate data entry across systems', 'Real-time sync between accounting and operations tools', 'Automated data imports and exports', 'Custom connections for systems without native integration'],
     tools: 'SQL Account · Xero · Bukku · AutoCount · Google Workspace',
+  },
+  {
+    icon: '📣',
+    group: 'social',
+    title: 'Social Media Management',
+    tagline: 'Stay visible without lifting a finger.',
+    description: 'We manage your social media presence end-to-end — from writing and designing posts to scheduling, publishing, and tracking performance. This includes researching and writing SEO-optimised blog articles for your website, covering tax updates, compliance changes, and industry topics your target clients are already searching for. You focus on your clients; we make sure the right people find you.',
+    outcomes: ['Consistent posting across LinkedIn, Facebook, and Instagram', 'SEO-optimised blog articles written and published monthly', 'Professional content tailored for accounting and finance audiences', 'Monthly performance summary with reach and engagement data'],
+    tools: 'Meta Business Suite · LinkedIn · Buffer · Canva · Google Search Console',
+  },
+  {
+    icon: '🌐',
+    group: 'website',
+    title: 'Website Design',
+    tagline: 'Designed to convert. Built to last.',
+    description: 'We design and build professional, fast-loading websites tailored to your firm\'s brand, then keep them fresh — content updates, new pages, performance monitoring, and technical maintenance so your site always reflects your current services. No more chasing developers for small changes.',
+    outcomes: ['Custom website design tailored to your brand', 'Fast, mobile-friendly, SEO-ready build', 'Content and service updates on request', 'Monthly SEO health check and ranking report'],
+    tools: 'Next.js · Vercel · Figma · Google Search Console · Google Analytics',
   },
 ]
 
@@ -111,7 +112,7 @@ export default function ServicesPage() {
               <p className="badge-in text-sm font-bold tracking-widest uppercase mb-5" style={{ color: '#FFDA1A', opacity: 0 }}>Our Services</p>
               <h1 className="fade-up text-5xl sm:text-6xl font-extrabold text-white leading-tight mb-6" style={{ opacity: 0, animationDelay: '0.1s' }}>Solutions Built<br/>for Accountants</h1>
               <p className="fade-up text-lg sm:text-xl leading-relaxed" style={{ color: 'rgba(255,255,255,0.82)', opacity: 0, animationDelay: '0.3s' }}>
-                From building your online presence to automating the busywork, every service we offer helps accounting professionals grow their visibility and run more efficiently.
+                Everything we offer sits in three areas: workflow automation, social media management, and website design — built specifically for accounting professionals.
               </p>
             </div>
             {/* Right — icon */}

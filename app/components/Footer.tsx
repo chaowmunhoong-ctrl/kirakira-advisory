@@ -16,7 +16,7 @@ export default function Footer() {
               Kira<span style={{ color: '#FFDA1A' }}>kira</span> Advisory
             </p>
             <p className="text-sm leading-relaxed" style={{ color: '#999' }}>
-              Smart solutions for accounting professionals. Automate the routine, sharpen the reporting.
+              Smart solutions for accounting professionals — automation, social media management, and website design, all in one place.
             </p>
           </div>
 

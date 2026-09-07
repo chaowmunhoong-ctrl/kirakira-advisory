@@ -41,22 +41,24 @@ function useCountUp(target: number, suffix = '', duration = 1800) {
   return { ref, display: val + suffix }
 }
 
-const serviceGroups = [
+const pillars = [
   {
-    key: 'visibility',
-    label: 'Grow Your Visibility',
-    items: [
-      { icon: '📣', title: 'Social Media Management', description: 'End-to-end social media presence — content, scheduling, and SEO-optimised blog articles — so the right clients find you without you lifting a finger.' },
-      { icon: '🌐', title: 'Website Management', description: 'Content updates, performance monitoring, and technical maintenance so your website always reflects your firm and stays visible on Google.' },
-    ],
+    number: '01',
+    icon: '⚡',
+    title: 'Automation',
+    description: 'We automate reconciliations, reporting, spreadsheets, and software integrations — eliminating the manual work that slows accounting teams down.',
   },
   {
-    key: 'efficiency',
-    label: 'Run More Efficiently',
-    items: [
-      { icon: '⚡', title: 'Workflow Automation', description: 'Eliminate repetitive data entry, reconciliations, and manual processes with smart automation built specifically for accounting workflows.' },
-      { icon: '📊', title: 'Custom Reporting & Dashboards', description: 'Replace manually compiled reports with live dashboards that pull accurate data automatically — so you always have the numbers you need.' },
-    ],
+    number: '02',
+    icon: '📣',
+    title: 'Social Media Management',
+    description: 'End-to-end social media presence — content, scheduling, and SEO-optimised blog articles — so the right clients find you without you lifting a finger.',
+  },
+  {
+    number: '03',
+    icon: '🌐',
+    title: 'Website Design',
+    description: 'We design, build, and maintain a fast, professional website that reflects your firm and turns visitors into enquiries.',
   },
 ]
 
@@ -99,7 +101,7 @@ export default function Home() {
             {/* Left */}
             <div className="lg:w-1/2 text-center lg:text-left">
               <div className="badge-in inline-block px-4 py-1 rounded-full text-xs font-bold tracking-widest uppercase mb-6" style={{ backgroundColor: '#FFDA1A', color: '#0051BA' }}>
-                Social Media Management for Accounting Firms
+                Automation, Social Media & Website Design for Accounting Firms
               </div>
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-6">
                 <span className="word word-1">Work</span>{' '}
@@ -108,7 +110,7 @@ export default function Home() {
                 <span className="word word-4" style={{ color: '#FFDA1A' }}>Harder.</span>
               </h1>
               <p className="fade-up text-lg sm:text-xl leading-relaxed mb-10" style={{ color: 'rgba(255,255,255,0.85)', animationDelay: '0.8s', opacity: 0 }}>
-                Kirakira Advisory keeps your accounting firm visible online — consistent social media content, blog articles, and a website that works for you — while we automate the routine work behind the scenes.
+                Kirakira Advisory helps accounting firms in three ways: we automate the busywork behind the scenes, manage your social media presence, and design a website that makes the right first impression.
               </p>
               <div className="fade-up flex flex-col sm:flex-row gap-4 justify-center lg:justify-start" style={{ animationDelay: '1s', opacity: 0 }}>
                 <Link href="/services" className="btn-glow px-8 py-4 rounded font-bold text-base hover:opacity-90 transition" style={{ backgroundColor: '#FFDA1A', color: '#0051BA' }}>
@@ -120,7 +122,13 @@ export default function Home() {
             {/* Right — animated automation icon + stats */}
             <div className="lg:w-1/2 w-full fade-up" style={{ animationDelay: '0.4s', opacity: 0 }}>
               <SocialIcon />
-              <div className="mt-6 pt-5 flex flex-col sm:flex-row justify-center gap-4 sm:gap-8" style={{ borderTop: '1px solid rgba(255,255,255,0.15)' }}>
+              <div className="mt-6 pt-5 flex flex-col sm:flex-row justify-center gap-4 sm:gap-6" style={{ borderTop: '1px solid rgba(255,255,255,0.15)' }}>
+                <div>
+                  <p className="text-xs font-bold tracking-widest uppercase mb-2 text-center" style={{ color: 'rgba(255,255,255,0.5)' }}>Tools we automate</p>
+                  <p className="text-sm font-medium text-center" style={{ color: 'rgba(255,255,255,0.75)' }}>
+                    SQL Account · Xero · Sheets
+                  </p>
+                </div>
                 <div>
                   <p className="text-xs font-bold tracking-widest uppercase mb-2 text-center" style={{ color: 'rgba(255,255,255,0.5)' }}>Platforms we manage</p>
                   <p className="text-sm font-medium text-center" style={{ color: 'rgba(255,255,255,0.75)' }}>
@@ -128,9 +136,9 @@ export default function Home() {
                   </p>
                 </div>
                 <div>
-                  <p className="text-xs font-bold tracking-widest uppercase mb-2 text-center" style={{ color: 'rgba(255,255,255,0.5)' }}>Tools we automate</p>
+                  <p className="text-xs font-bold tracking-widest uppercase mb-2 text-center" style={{ color: 'rgba(255,255,255,0.5)' }}>Websites we build</p>
                   <p className="text-sm font-medium text-center" style={{ color: 'rgba(255,255,255,0.75)' }}>
-                    SQL Account · Xero · Google Sheets
+                    Next.js · SEO · Fast
                   </p>
                 </div>
               </div>
@@ -150,28 +158,20 @@ export default function Home() {
             <p className="text-xs font-bold tracking-widest uppercase mb-3" style={{ color: '#0051BA' }}>What We Do</p>
             <h2 className="text-4xl sm:text-5xl font-bold mb-5" style={{ color: '#111' }}>Our Services</h2>
             <p className="text-lg max-w-xl mx-auto" style={{ color: '#666' }}>
-              From building your firm's online presence to automating the busywork behind the scenes, we help accounting teams stay visible and measurably more efficient.
+              Everything we do falls into three clear areas: automating your workflows, managing your social media, and designing a website that works for you.
             </p>
           </div>
-          <div className="space-y-12">
-            {serviceGroups.map((group, gi) => (
-              <div key={group.key}>
-                <p className="reveal text-xs font-bold tracking-widest uppercase mb-5" style={{ color: '#FFDA1A', textShadow: '0 0 0' }}>
-                  <span className="inline-block px-3 py-1 rounded-full" style={{ backgroundColor: '#0051BA', color: '#FFDA1A' }}>{group.label}</span>
-                </p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  {group.items.map((s, i) => (
-                    <div
-                      key={s.title}
-                      className={`card-hover reveal reveal-delay-${gi * 2 + i + 1} p-8 sm:p-10 rounded-xl border-2`}
-                      style={{ borderColor: '#E5E7EB' }}
-                    >
-                      <div className="card-icon text-5xl mb-5">{s.icon}</div>
-                      <h3 className="text-2xl font-bold mb-3" style={{ color: '#0051BA' }}>{s.title}</h3>
-                      <p className="text-base leading-relaxed" style={{ color: '#555' }}>{s.description}</p>
-                    </div>
-                  ))}
-                </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            {pillars.map((p, i) => (
+              <div
+                key={p.title}
+                className={`card-hover reveal reveal-delay-${i + 1} p-8 sm:p-10 rounded-xl border-2 relative`}
+                style={{ borderColor: '#E5E7EB' }}
+              >
+                <p className="absolute top-6 right-7 text-sm font-extrabold" style={{ color: '#E5E7EB' }}>{p.number}</p>
+                <div className="card-icon text-5xl mb-5">{p.icon}</div>
+                <h3 className="text-2xl font-bold mb-3" style={{ color: '#0051BA' }}>{p.title}</h3>
+                <p className="text-base leading-relaxed" style={{ color: '#555' }}>{p.description}</p>
               </div>
             ))}
           </div>

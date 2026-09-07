@@ -1,13 +1,13 @@
 export default function SocialIcon() {
   const cx = 240, cy = 158
-  // 6 nodes alternating between social platforms and automation tools
+  // 6 nodes, 2 each for the three pillars: automation, social, website
   const platforms = [
     { angle: -90, name: 'Instagram',   short: 'IG',     color: '#e1306c' },
     { angle: -30, name: 'SQL Account', short: 'SQL',    color: '#ff9800' },
-    { angle:  30, name: 'Facebook',    short: 'FB',     color: '#1877f2' },
-    { angle:  90, name: 'Sheets',      short: 'SHEETS', color: '#34a853' },
-    { angle: 150, name: 'Blog',        short: 'BLOG',   color: '#FFDA1A' },
-    { angle: 210, name: 'Xero',        short: 'XERO',   color: '#13b5ea' },
+    { angle:  30, name: 'Website',     short: 'WEB',    color: '#4fc3f7' },
+    { angle:  90, name: 'Facebook',    short: 'FB',     color: '#1877f2' },
+    { angle: 150, name: 'Sheets',      short: 'SHEETS', color: '#34a853' },
+    { angle: 210, name: 'SEO',         short: 'SEO',    color: '#ab47bc' },
   ]
   const R = 128 // orbit radius
 
@@ -177,7 +177,7 @@ export default function SocialIcon() {
 
         {/* label below */}
         <text x={cx} y={cy + 90} textAnchor="middle" fontSize="8" fontWeight="700"
-          fill="rgba(255,218,26,.55)" letterSpacing="2" style={{ fontFamily: 'system-ui,sans-serif' }}>GROW · AUTOMATE</text>
+          fill="rgba(255,218,26,.55)" letterSpacing="2" style={{ fontFamily: 'system-ui,sans-serif' }}>AUTOMATE · GROW · BUILD</text>
 
       </svg>
     </div>
