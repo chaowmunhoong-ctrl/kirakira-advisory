@@ -1,7 +1,7 @@
 'use client'
 import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
-import WorkflowIcon from './components/WorkflowIcon'
+import SocialIcon from './components/SocialIcon'
 
 /* ── Scroll-reveal hook ── */
 function useReveal() {
@@ -42,10 +42,10 @@ function useCountUp(target: number, suffix = '', duration = 1800) {
 }
 
 const services = [
+  { icon: '📣', title: 'Social Media Management', description: 'End-to-end social media presence — content, scheduling, and SEO-optimised blog articles — so the right clients find you without you lifting a finger.' },
   { icon: '⚡', title: 'Workflow Automation', description: 'Eliminate repetitive data entry, reconciliations, and manual processes with smart automation built specifically for accounting workflows.' },
   { icon: '📊', title: 'Custom Reporting & Dashboards', description: 'Replace manually compiled reports with live dashboards that pull accurate data automatically — so you always have the numbers you need.' },
-  { icon: '📑', title: 'Spreadsheet Optimisation', description: 'We transform basic spreadsheets into professional, error-proof tools — cleaner models, smarter formulas, and templates that actually scale.' },
-  { icon: '🔗', title: 'App & Software Integration', description: 'Connect your accounting software, payroll systems, and business tools so data flows between them automatically — no more manual transfers.' },
+  { icon: '🌐', title: 'Website Management', description: 'Content updates, performance monitoring, and technical maintenance so your website always reflects your firm and stays visible on Google.' },
 ]
 
 const whyUs = [
@@ -87,7 +87,7 @@ export default function Home() {
             {/* Left */}
             <div className="lg:w-1/2 text-center lg:text-left">
               <div className="badge-in inline-block px-4 py-1 rounded-full text-xs font-bold tracking-widest uppercase mb-6" style={{ backgroundColor: '#FFDA1A', color: '#0051BA' }}>
-                Smart Solutions for Accountants
+                Social Media Management for Accounting Firms
               </div>
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-6">
                 <span className="word word-1">Work</span>{' '}
@@ -96,7 +96,7 @@ export default function Home() {
                 <span className="word word-4" style={{ color: '#FFDA1A' }}>Harder.</span>
               </h1>
               <p className="fade-up text-lg sm:text-xl leading-relaxed mb-10" style={{ color: 'rgba(255,255,255,0.85)', animationDelay: '0.8s', opacity: 0 }}>
-                Kirakira Advisory helps accounting professionals automate the routine, sharpen their reporting, and connect the tools they rely on every day.
+                Kirakira Advisory keeps your accounting firm visible online — consistent social media content, blog articles, and a website that works for you — while we automate the routine work behind the scenes.
               </p>
               <div className="fade-up flex flex-col sm:flex-row gap-4 justify-center lg:justify-start" style={{ animationDelay: '1s', opacity: 0 }}>
                 <Link href="/services" className="btn-glow px-8 py-4 rounded font-bold text-base hover:opacity-90 transition" style={{ backgroundColor: '#FFDA1A', color: '#0051BA' }}>
@@ -107,7 +107,7 @@ export default function Home() {
 
             {/* Right — animated automation icon + stats */}
             <div className="lg:w-1/2 w-full fade-up" style={{ animationDelay: '0.4s', opacity: 0 }}>
-              <WorkflowIcon />
+              <SocialIcon />
               <div className="mt-6 pt-5" style={{ borderTop: '1px solid rgba(255,255,255,0.15)' }}>
                 <p className="text-xs font-bold tracking-widest uppercase mb-2 text-center" style={{ color: 'rgba(255,255,255,0.5)' }}>Tools we work with</p>
                 <p className="text-sm font-medium text-center" style={{ color: 'rgba(255,255,255,0.75)' }}>
@@ -130,7 +130,7 @@ export default function Home() {
             <p className="text-xs font-bold tracking-widest uppercase mb-3" style={{ color: '#0051BA' }}>What We Do</p>
             <h2 className="text-4xl sm:text-5xl font-bold mb-5" style={{ color: '#111' }}>Our Services</h2>
             <p className="text-lg max-w-xl mx-auto" style={{ color: '#666' }}>
-              From eliminating manual work to connecting your full tech stack, we build solutions that make accounting teams measurably more efficient.
+              From building your firm's online presence to automating the busywork behind the scenes, we help accounting teams stay visible and measurably more efficient.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">

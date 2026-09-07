@@ -4,13 +4,15 @@ export default function ServicesIcon() {
       <svg viewBox="0 0 480 320" width="100%" style={{ maxWidth: 520 }} xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <defs>
           <style>{`
-            /* ── AUTOMATE: gear spin ── */
-            @keyframes sv-gear{from{transform:rotate(0)}to{transform:rotate(360deg)}}
-            @keyframes sv-gearr{from{transform:rotate(0)}to{transform:rotate(-360deg)}}
-            .sv-g1{animation:sv-gear  4s linear infinite;transform-origin:96px 96px;will-change:transform}
-            .sv-g2{animation:sv-gearr 3s linear infinite;transform-origin:122px 112px;will-change:transform}
-            @keyframes sv-chk{0%,30%{stroke-dashoffset:20}70%,100%{stroke-dashoffset:0}}
-            .sv-chk{stroke-dasharray:20;animation:sv-chk 2s ease-out infinite;will-change:auto}
+            /* ── SOCIAL: post card + engagement pulse ── */
+            @keyframes sv-heart{0%,100%{transform:scale(1)}50%{transform:scale(1.35)}}
+            .sv-heart{animation:sv-heart 1.6s ease-in-out infinite;transform-origin:center;will-change:transform}
+            @keyframes sv-cmt{0%,100%{transform:scale(1);opacity:.85}50%{transform:scale(1.2);opacity:1}}
+            .sv-cmt{animation:sv-cmt 1.8s ease-in-out infinite .3s;transform-origin:center;will-change:transform,opacity}
+            @keyframes sv-postglow{0%,100%{opacity:.7}50%{opacity:1}}
+            .sv-postglow{animation:sv-postglow 2.4s ease-in-out infinite;will-change:opacity}
+            @keyframes sv-cap{0%,5%{transform:scaleX(0);opacity:0}25%,90%{transform:scaleX(1);opacity:1}100%{transform:scaleX(0);opacity:0}}
+            .sv-cap{animation:sv-cap 3s ease-out infinite;transform-origin:left;will-change:transform,opacity}
 
             /* ── REPORTS: bar grow ── */
             @keyframes sv-bar{0%{transform:scaleY(.1)}55%{transform:scaleY(1)}75%{transform:scaleY(.85)}100%{transform:scaleY(1)}}
@@ -72,36 +74,34 @@ export default function ServicesIcon() {
         <line className="sv-conn4" x1="384" y1="148" x2="384" y2="172" stroke="#FFDA1A" strokeWidth="2" strokeDasharray="5 4"/>
 
         {/* ════════════════════════════════
-            TOP-LEFT — AUTOMATE
+            TOP-LEFT — SOCIAL
         ════════════════════════════════ */}
         <g className="sv-card">
-          <rect x="18" y="28" width="156" height="136" rx="18" fill="url(#sv-card-bg)" stroke="#FFDA1A" strokeWidth="2.5"/>
-          <text x="96" y="52" textAnchor="middle" fontSize="9" fontWeight="700" fill="#FFDA1A" letterSpacing="1.5" style={{ fontFamily: 'system-ui,sans-serif' }}>AUTOMATE</text>
+          <rect x="18" y="28" width="156" height="136" rx="18" fill="url(#sv-card-bg)" stroke="#e1306c" strokeWidth="2.5"/>
+          <text x="96" y="52" textAnchor="middle" fontSize="9" fontWeight="700" fill="#e1306c" letterSpacing="1.5" style={{ fontFamily: 'system-ui,sans-serif' }}>SOCIAL</text>
 
-          {/* large gear */}
-          <g className="sv-g1">
-            <circle cx="96" cy="96" r="24" fill="none" stroke="#FFDA1A" strokeWidth="5"/>
-            {[0,45,90,135,180,225,270,315].map((deg,i)=>{
-              const r=Math.PI/180, x=96+29*Math.cos(deg*r), y=96+29*Math.sin(deg*r)
-              return <rect key={i} x={x-4} y={y-4} width="8" height="8" rx="2" fill="#FFDA1A" transform={`rotate(${deg},${x},${y})`}/>
-            })}
-            <circle cx="96" cy="96" r="10" fill="#001540"/>
-            <circle cx="96" cy="96" r="5" fill="#FFDA1A" opacity=".7"/>
+          {/* post card */}
+          <g className="sv-postglow">
+            <rect x="52" y="64" width="88" height="46" rx="7" fill="#001540" stroke="rgba(255,218,26,.4)" strokeWidth="1.5"/>
+            {/* image placeholder: sun + mountains */}
+            <circle cx="66" cy="76" r="4" fill="#FFDA1A" opacity=".8"/>
+            <polyline points="56,102 78,84 92,96 104,80 132,102" fill="none" stroke="rgba(79,195,247,.6)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
           </g>
-          {/* small gear */}
-          <g className="sv-g2">
-            <circle cx="122" cy="112" r="13" fill="none" stroke="rgba(255,218,26,.5)" strokeWidth="3"/>
-            {[0,60,120,180,240,300].map((deg,i)=>{
-              const r=Math.PI/180, x=122+16*Math.cos(deg*r), y=112+16*Math.sin(deg*r)
-              return <rect key={i} x={x-3} y={y-3} width="6" height="6" rx="1.5" fill="rgba(255,218,26,.5)" transform={`rotate(${deg},${x},${y})`}/>
-            })}
-            <circle cx="122" cy="112" r="5" fill="#001540"/>
-          </g>
-          {/* checkmark */}
-          <circle cx="64" cy="114" r="11" fill="#4caf50" opacity=".9"/>
-          <polyline className="sv-chk" points="59,114 63,119 70,109" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+          {/* caption lines */}
+          <rect className="sv-cap" x="52" y="116" width="70" height="4" rx="2" fill="rgba(255,255,255,.3)"/>
+          <rect className="sv-cap" x="52" y="124" width="46" height="4" rx="2" fill="rgba(255,255,255,.18)" style={{ animationDelay: '.2s' }}/>
 
-          <text x="96" y="152" textAnchor="middle" fontSize="7" fill="rgba(255,255,255,.5)" style={{ fontFamily: 'system-ui,sans-serif' }}>Workflows</text>
+          {/* engagement row */}
+          <g className="sv-heart" style={{ transformOrigin: '64px 140px' }}>
+            <circle cx="64" cy="140" r="9" fill="#e1306c"/>
+            <text x="64" y="143.5" textAnchor="middle" fontSize="9" style={{ fontFamily: 'system-ui,sans-serif' }}>❤</text>
+          </g>
+          <g className="sv-cmt" style={{ transformOrigin: '90px 140px' }}>
+            <circle cx="90" cy="140" r="9" fill="#4fc3f7"/>
+            <text x="90" y="143.5" textAnchor="middle" fontSize="8" fill="white" style={{ fontFamily: 'system-ui,sans-serif' }}>💬</text>
+          </g>
+
+          <text x="96" y="152" textAnchor="middle" fontSize="7" fill="rgba(255,255,255,.5)" style={{ fontFamily: 'system-ui,sans-serif' }}>Content & reach</text>
         </g>
 
         {/* ════════════════════════════════

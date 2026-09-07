@@ -33,6 +33,22 @@ const WA_BTN = ({ label = 'WhatsApp Us', large = false }: { label?: string; larg
 
 const services = [
   {
+    icon: '📣',
+    title: 'Social Media Management',
+    tagline: 'Stay visible without lifting a finger.',
+    description: 'We manage your social media presence end-to-end — from writing and designing posts to scheduling, publishing, and tracking performance. This includes researching and writing SEO-optimised blog articles for your website, covering tax updates, compliance changes, and industry topics your target clients are already searching for. You focus on your clients; we make sure the right people find you.',
+    outcomes: ['Consistent posting across LinkedIn, Facebook, and Instagram', 'SEO-optimised blog articles written and published monthly', 'Professional content tailored for accounting and finance audiences', 'Monthly performance summary with reach and engagement data'],
+    tools: 'Meta Business Suite · LinkedIn · Buffer · Canva · Google Search Console',
+  },
+  {
+    icon: '🌐',
+    title: 'Website Management',
+    tagline: 'Your website, always fresh and working.',
+    description: 'Your website is often the first thing a potential client sees. We handle content updates, new page builds, performance monitoring, and technical maintenance so your site always reflects your current services and stays fast, secure, and visible on Google. No more chasing developers for small changes.',
+    outcomes: ['Content and service updates on request', 'Uptime and performance monitoring', 'Monthly SEO health check and ranking report', 'Fast turnaround on edits — typically within 1 business day'],
+    tools: 'Next.js · Vercel · Google Search Console · Google Analytics',
+  },
+  {
     icon: '⚡',
     title: 'Workflow Automation',
     tagline: 'Eliminate the repetitive. Keep the meaningful.',
@@ -64,22 +80,6 @@ const services = [
     outcomes: ['Eliminate duplicate data entry across systems', 'Real-time sync between accounting and operations tools', 'Automated data imports and exports', 'Custom connections for systems without native integration'],
     tools: 'SQL Account · Xero · Bukku · AutoCount · Google Workspace',
   },
-  {
-    icon: '📣',
-    title: 'Social Media Management',
-    tagline: 'Stay visible without lifting a finger.',
-    description: 'We manage your social media presence end-to-end — from writing and designing posts to scheduling, publishing, and tracking performance. This includes researching and writing SEO-optimised blog articles for your website, covering tax updates, compliance changes, and industry topics your target clients are already searching for. You focus on your clients; we make sure the right people find you.',
-    outcomes: ['Consistent posting across LinkedIn, Facebook, and Instagram', 'SEO-optimised blog articles written and published monthly', 'Professional content tailored for accounting and finance audiences', 'Monthly performance summary with reach and engagement data'],
-    tools: 'Meta Business Suite · LinkedIn · Buffer · Canva · Google Search Console',
-  },
-  {
-    icon: '🌐',
-    title: 'Website Management',
-    tagline: 'Your website, always fresh and working.',
-    description: 'Your website is often the first thing a potential client sees. We handle content updates, new page builds, performance monitoring, and technical maintenance so your site always reflects your current services and stays fast, secure, and visible on Google. No more chasing developers for small changes.',
-    outcomes: ['Content and service updates on request', 'Uptime and performance monitoring', 'Monthly SEO health check and ranking report', 'Fast turnaround on edits — typically within 1 business day'],
-    tools: 'Next.js · Vercel · Google Search Console · Google Analytics',
-  },
 ]
 
 export default function ServicesPage() {
@@ -100,7 +100,7 @@ export default function ServicesPage() {
               <p className="badge-in text-sm font-bold tracking-widest uppercase mb-5" style={{ color: '#FFDA1A', opacity: 0 }}>Our Services</p>
               <h1 className="fade-up text-5xl sm:text-6xl font-extrabold text-white leading-tight mb-6" style={{ opacity: 0, animationDelay: '0.1s' }}>Solutions Built<br/>for Accountants</h1>
               <p className="fade-up text-lg sm:text-xl leading-relaxed" style={{ color: 'rgba(255,255,255,0.82)', opacity: 0, animationDelay: '0.3s' }}>
-                Every service we offer is designed around one goal: helping accounting professionals spend less time on the routine and more time on the work that actually matters.
+                From building your online presence to automating the busywork, every service we offer helps accounting professionals grow their visibility and run more efficiently.
               </p>
             </div>
             {/* Right — icon */}
