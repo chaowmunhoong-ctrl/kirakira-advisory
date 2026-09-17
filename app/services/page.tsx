@@ -43,8 +43,8 @@ const services = [
     group: 'automation',
     title: 'Workflow Automation',
     tagline: 'Eliminate the repetitive. Keep the meaningful.',
-    description: 'We map your current accounting workflows and identify tasks that can be fully or partially automated — whether that is bank reconciliation, invoice processing, payroll data preparation, or month-end closing checklists. The result is a process that runs reliably in the background while your team focuses on higher-value work.',
-    outcomes: ['Reduce manual data entry by up to 80%', 'Faster month-end close cycles', 'Fewer human errors in routine processes', 'More time for analysis and advisory work'],
+    description: 'Built on Google Sheets and Apps Script, we automate the routine steps in your accounting workflow — bank reconciliation, invoice processing, payroll data preparation, and month-end closing checklists. The script runs the process and flags anything that looks off, so checking and reviewing the output takes minutes instead of hours.',
+    outcomes: ['Reduce manual data entry by up to 80%', 'Faster month-end close cycles', 'Automated checks that flag exceptions before they reach your reviewer', 'More time for analysis and advisory work'],
     tools: 'Google Sheets · Apps Script · SQL Account · Bukku · AutoCount',
   },
   {
@@ -52,27 +52,27 @@ const services = [
     group: 'automation',
     title: 'Custom Reporting & Dashboards',
     tagline: 'See what matters, when it matters.',
-    description: 'We design and build management reports and dashboards that pull live data from your accounting system, spreadsheets, or databases. Instead of manually compiling figures every month, you get a report that updates itself — giving you and your clients real-time financial visibility without the extra work.',
-    outcomes: ['Real-time P&L, cash flow, and KPI dashboards', 'Automated monthly and weekly report generation', 'Clear visualisations for non-financial stakeholders', 'Reports tailored to your exact business structure'],
-    tools: 'Google Looker Studio · Google Sheets · Microsoft Excel · SQL Account',
+    description: 'Using Google Sheets and Apps Script, we build reports and dashboards that pull live data straight from your accounting system, spreadsheets, or databases. Instead of manually compiling and cross-checking figures every month, you get a report that updates and validates itself, so reviewing it is a quick glance rather than a rebuild.',
+    outcomes: ['Real-time P&L, cash flow, and KPI dashboards', 'Automated monthly and weekly report generation', 'Built-in checks that highlight numbers worth a second look', 'Reports tailored to your exact business structure'],
+    tools: 'Google Sheets · Apps Script · Google Looker Studio · SQL Account',
   },
   {
     icon: '📑',
     group: 'automation',
     title: 'Spreadsheet Optimisation',
     tagline: 'Your spreadsheet is more powerful than you think.',
-    description: 'Most accounting teams use a fraction of what spreadsheets can do. We redesign your existing spreadsheets and build new ones from scratch — with proper data validation, dynamic formulas, clean structures, and protected logic that will not break when someone makes a mistake.',
-    outcomes: ['Error-proof spreadsheet models', 'Dynamic templates that scale with your data', 'Faster data entry with smart dropdowns and automation', 'Professional, client-ready formatting'],
-    tools: 'Google Sheets · Microsoft Excel · Google Apps Script · VBA',
+    description: 'Most accounting teams use a fraction of what Google Sheets can do. We redesign your existing spreadsheets and build new ones from scratch with Apps Script behind them, adding data validation, dynamic formulas, clean structures, and automatic flags on entries that need a second look, so review is faster and mistakes get caught before they spread.',
+    outcomes: ['Error-proof spreadsheet models', 'Dynamic templates that scale with your data', 'Faster data entry with smart dropdowns and automation', 'Automatic flags on entries that need review'],
+    tools: 'Google Sheets · Google Apps Script · Microsoft Excel · VBA',
   },
   {
     icon: '🔗',
     group: 'automation',
     title: 'App & Software Integration',
     tagline: 'Stop copying data between systems.',
-    description: 'If your team spends time manually moving data from one system to another, that is time and money wasted. We connect your accounting software, payroll systems, CRM, inventory tools, and other business apps so data flows automatically between them — eliminating duplicate entry and keeping everything in sync.',
+    description: 'If your team spends time manually moving data from one system to another, that is time and money wasted. We use Google Sheets and Apps Script as the connector, pushing and pulling data directly into your accounting software, payroll systems, CRM, and other business apps, so everything stays in sync and reconciling between systems is no longer a manual check.',
     outcomes: ['Eliminate duplicate data entry across systems', 'Real-time sync between accounting and operations tools', 'Automated data imports and exports', 'Custom connections for systems without native integration'],
-    tools: 'SQL Account · Xero · Bukku · AutoCount · Google Workspace',
+    tools: 'Google Sheets · Apps Script · SQL Account · Xero · Bukku · AutoCount',
   },
   {
     icon: '📣',
@@ -112,7 +112,7 @@ export default function ServicesPage() {
               <p className="badge-in text-sm font-bold tracking-widest uppercase mb-5" style={{ color: '#FFDA1A', opacity: 0 }}>Our Services</p>
               <h1 className="fade-up text-5xl sm:text-6xl font-extrabold text-white leading-tight mb-6" style={{ opacity: 0, animationDelay: '0.1s' }}>Solutions Built<br/>for Accountants</h1>
               <p className="fade-up text-lg sm:text-xl leading-relaxed" style={{ color: 'rgba(255,255,255,0.82)', opacity: 0, animationDelay: '0.3s' }}>
-                Everything we offer sits in three areas: workflow automation, social media management, and website design — built specifically for accounting professionals.
+                Everything we offer sits in three areas: Google Sheets and Apps Script automation, social media management, and website design — built specifically for accounting professionals.
               </p>
             </div>
             {/* Right — icon */}

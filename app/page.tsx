@@ -46,7 +46,7 @@ const pillars = [
     number: '01',
     icon: '⚡',
     title: 'Automation',
-    description: 'We automate reconciliations, reporting, spreadsheets, and software integrations — eliminating the manual work that slows accounting teams down.',
+    description: 'Built on Google Sheets and Apps Script, we automate routine processes, speed up checking and review, and connect everything directly into your accounting software — eliminating the manual work that slows accounting teams down.',
   },
   {
     number: '02',
@@ -126,7 +126,7 @@ export default function Home() {
                 <div>
                   <p className="text-xs font-bold tracking-widest uppercase mb-2 text-center" style={{ color: 'rgba(255,255,255,0.5)' }}>Tools we automate</p>
                   <p className="text-sm font-medium text-center" style={{ color: 'rgba(255,255,255,0.75)' }}>
-                    SQL Account · Xero · Sheets
+                    Google Sheets · Apps Script · SQL Account
                   </p>
                 </div>
                 <div>
