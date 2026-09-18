@@ -41,10 +41,11 @@ const services = [
   {
     icon: '⚡',
     group: 'automation',
-    title: 'Workflow Automation',
+    title: 'Workflow Automation for Accounting & Finance',
     tagline: 'Eliminate the repetitive. Keep the meaningful.',
-    description: 'Built on Google Sheets and Apps Script, we automate the routine steps in your accounting workflow — bank reconciliation, invoice processing, payroll data preparation, and month-end closing checklists. The script runs the process and flags anything that looks off, so checking and reviewing the output takes minutes instead of hours.',
-    outcomes: ['Reduce manual data entry by up to 80%', 'Faster month-end close cycles', 'Automated checks that flag exceptions before they reach your reviewer', 'More time for analysis and advisory work'],
+    description: 'Built on Google Sheets and Apps Script, we automate repetitive accounting processes such as bank reconciliation, invoice processing, data matching, bulk transaction processing, payroll data preparation, and month-end procedures. The system processes the data, performs predefined checks, and flags exceptions for review, then feeds the results directly into your accounting software, so your team spends less time on manual processing and more time reviewing results and focusing on higher-value work.',
+    outcomes: ['Less repetitive data entry', 'Faster month-end processing', 'Exceptions identified automatically for review', 'More time for analysis, decision-making and advisory work'],
+    resultsLabel: 'What automation delivers',
     tools: 'Google Sheets · Apps Script · SQL Account · Bukku · AutoCount',
   },
   {
@@ -154,7 +155,7 @@ export default function ServicesPage() {
                 <div className="lg:w-2/3">
                   <p className="text-lg leading-relaxed mb-6" style={{ color: '#444' }}>{s.description}</p>
                   <div className="p-6 rounded-xl" style={{ backgroundColor: '#EEF4FF', borderLeft: '4px solid #0051BA' }}>
-                    <p className="text-sm font-bold mb-4" style={{ color: '#0051BA' }}>What you get</p>
+                    <p className="text-sm font-bold mb-4" style={{ color: '#0051BA' }}>{s.resultsLabel || 'What you get'}</p>
                     <ul className="space-y-3">
                       {s.outcomes.map(o => (
                         <li key={o} className="flex items-start gap-3 text-base" style={{ color: '#333' }}>
