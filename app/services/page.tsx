@@ -53,8 +53,8 @@ const services = [
     group: 'automation',
     title: 'App & Software Integration',
     tagline: 'Stop copying data between systems.',
-    description: 'If your team spends time manually moving data from one system to another, that is time and money wasted. We use Google Sheets and Apps Script as the connector, pushing and pulling data directly into your accounting software, payroll systems, CRM, and other business apps, so everything stays in sync and reconciling between systems is no longer a manual check.',
-    outcomes: ['Eliminate duplicate data entry across systems', 'Real-time sync between accounting and operations tools', 'Automated data imports and exports', 'Custom connections for systems without native integration'],
+    description: 'If your team spends time manually keying data into your accounting software, that is time and money wasted. We use Google Sheets and Apps Script as the connector, pushing data directly into AutoCount, SQL Account, Bukku, Xero, and other accounting software, so your records stay up to date and reconciling between systems is no longer a manual check.',
+    outcomes: ['Eliminate duplicate data entry into your accounting software', 'Data flows straight into AutoCount, SQL Account, Bukku, and Xero', 'Automated data imports and exports', 'Custom connections for accounting software without native integration'],
     tools: 'Google Sheets · Apps Script · SQL Account · Xero · Bukku · AutoCount',
   },
   {
