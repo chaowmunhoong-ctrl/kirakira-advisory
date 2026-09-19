@@ -1,8 +1,17 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://kirakira-advisory.vercel.app'),
   title: 'Jeffrey Chaow - Kirakira Advisory',
   description: 'Digital name card of Jeffrey Chaow, Senior Operation Analyst at Kirakira Advisory.',
+  openGraph: {
+    title: 'Jeffrey Chaow - Kirakira Advisory',
+    description: 'Digital name card of Jeffrey Chaow, Senior Operation Analyst at Kirakira Advisory.',
+    url: '/card/jeffrey',
+    siteName: 'Kirakira Advisory',
+    type: 'website',
+  },
+  twitter: { card: 'summary_large_image' },
 }
 
 const NAVY = '#12295C'
