@@ -55,7 +55,7 @@ export default function JeffreyCard() {
           {/* Brand block */}
           <div style={{ position: 'relative', padding: '32px 26px 0' }}>
             <p style={{ fontSize: 52, fontWeight: 800, letterSpacing: '-2px', lineHeight: 1, color: NAVY }}>
-              K<span style={{ position: 'relative' }}>{'ı'}<span style={{ position: 'absolute', top: '0.17em', left: '50%', transform: 'translateX(-50%)', width: '0.19em', height: '0.19em', borderRadius: '50%', backgroundColor: YELLOW }} /></span>ra<span style={{ color: TEAL }}>kira</span>
+              K<span style={{ position: 'relative' }}>{'ı'}<span style={{ position: 'absolute', top: '0.17em', left: '50%', transform: 'translateX(-50%)', width: '0.19em', height: '0.19em', borderRadius: '50%', backgroundColor: YELLOW }} /></span>ra<span style={{ color: YELLOW }}>k<span style={{ position: 'relative' }}>{'ı'}<span style={{ position: 'absolute', top: '0.17em', left: '50%', transform: 'translateX(-50%)', width: '0.19em', height: '0.19em', borderRadius: '50%', backgroundColor: NAVY }} /></span>ra</span>
             </p>
             <p style={{ fontSize: 16, fontWeight: 500, letterSpacing: '0.42em', color: NAVY, marginTop: 8 }}>ADVISORY</p>
             <p style={{ fontSize: 11.5, letterSpacing: '0.08em', color: MUTED, marginTop: 8 }}>Company Reg. No. 202603228882</p>
