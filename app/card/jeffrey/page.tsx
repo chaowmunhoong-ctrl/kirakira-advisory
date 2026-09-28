@@ -116,7 +116,7 @@ export default function JeffreyCard() {
 
             <div style={{ textAlign: 'center', marginTop: 16 }}>
               <h1 style={{ fontSize: 32, fontWeight: 800, letterSpacing: '-0.5px', color: NAVY }}>Jeffrey Chaow</h1>
-              <p style={{ fontSize: 11, fontWeight: 800, letterSpacing: '0.03em', color: TEAL, marginTop: 10, whiteSpace: 'nowrap' }}>AUTOMATION SPECIALIST &amp; CONTENT STRATEGIST</p>
+              <p style={{ fontSize: 13.5, fontWeight: 800, letterSpacing: '0.1em', color: TEAL, marginTop: 10, lineHeight: 1.6 }}>AUTOMATION SPECIALIST &amp;<br />CONTENT STRATEGIST</p>
               <div style={{ width: 54, height: 4, borderRadius: 4, backgroundColor: YELLOW, margin: '14px auto 0' }} />
             </div>
 
