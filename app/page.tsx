@@ -132,13 +132,13 @@ export default function Home() {
                 <div>
                   <p className="text-xs font-bold tracking-widest uppercase mb-2 text-center" style={{ color: 'rgba(255,255,255,0.5)' }}>Platforms we manage</p>
                   <p className="text-sm font-medium text-center" style={{ color: 'rgba(255,255,255,0.75)' }}>
-                    Instagram · Facebook · Blog
+                    Facebook · LinkedIn · Blog
                   </p>
                 </div>
                 <div>
                   <p className="text-xs font-bold tracking-widest uppercase mb-2 text-center" style={{ color: 'rgba(255,255,255,0.5)' }}>Websites we build</p>
                   <p className="text-sm font-medium text-center" style={{ color: 'rgba(255,255,255,0.75)' }}>
-                    Next.js · SEO · Fast
+                    Mobile and Desktop Responsive · SEO Optimisation
                   </p>
                 </div>
               </div>

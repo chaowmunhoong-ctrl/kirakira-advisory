@@ -3,10 +3,10 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   metadataBase: new URL('https://kirakira-advisory.vercel.app'),
   title: 'Jeffrey Chaow - Kirakira Advisory',
-  description: 'Digital name card of Jeffrey Chaow, Senior Operation Analyst at Kirakira Advisory.',
+  description: 'Digital name card of Jeffrey Chaow, Automation Specialist & Content Strategist at Kirakira Advisory.',
   openGraph: {
     title: 'Jeffrey Chaow - Kirakira Advisory',
-    description: 'Digital name card of Jeffrey Chaow, Senior Operation Analyst at Kirakira Advisory.',
+    description: 'Digital name card of Jeffrey Chaow, Automation Specialist & Content Strategist at Kirakira Advisory.',
     url: '/card/jeffrey',
     siteName: 'Kirakira Advisory',
     type: 'website',
@@ -116,7 +116,7 @@ export default function JeffreyCard() {
 
             <div style={{ textAlign: 'center', marginTop: 16 }}>
               <h1 style={{ fontSize: 32, fontWeight: 800, letterSpacing: '-0.5px', color: NAVY }}>Jeffrey Chaow</h1>
-              <p style={{ fontSize: 13.5, fontWeight: 800, letterSpacing: '0.2em', color: TEAL, marginTop: 10 }}>SENIOR OPERATION ANALYST</p>
+              <p style={{ fontSize: 13.5, fontWeight: 800, letterSpacing: '0.12em', color: TEAL, marginTop: 10 }}>AUTOMATION SPECIALIST &amp; CONTENT STRATEGIST</p>
               <div style={{ width: 54, height: 4, borderRadius: 4, backgroundColor: YELLOW, margin: '14px auto 0' }} />
             </div>
 

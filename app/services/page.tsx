@@ -63,7 +63,7 @@ const services = [
     title: 'Social Media Management',
     tagline: 'Stay visible without lifting a finger.',
     description: 'We manage your social media presence end-to-end — from writing and designing posts to scheduling, publishing, and tracking performance. This includes researching and writing SEO-optimised blog articles for your website, covering tax updates, compliance changes, and industry topics your target clients are already searching for. You focus on your clients; we make sure the right people find you.',
-    outcomes: ['Consistent posting across LinkedIn, Facebook, and Instagram', 'SEO-optimised blog articles written and published monthly', 'Professional content tailored for accounting and finance audiences', 'Monthly performance summary with reach and engagement data'],
+    outcomes: ['Consistent posting across Facebook and LinkedIn', 'SEO-optimised blog articles written and published monthly', 'Professional content tailored for accounting and finance audiences', 'Monthly performance summary with reach and engagement data'],
     tools: 'Meta Business Suite · LinkedIn · Buffer · Canva · Google Search Console',
   },
   {

@@ -57,8 +57,8 @@ export default async function Image() {
         <div style={{ position: 'absolute', left: 640, top: 0, bottom: 0, right: 56, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
           <div style={{ display: 'flex', fontSize: 62, fontWeight: 800, letterSpacing: -1.5, color: INK, lineHeight: 1.05, whiteSpace: 'nowrap' }}>Jeffrey Chaow</div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginTop: 22 }}>
-            <div style={{ display: 'flex', width: 40, height: 3, backgroundColor: TEAL }} />
-            <div style={{ display: 'flex', fontSize: 21, fontWeight: 600, letterSpacing: 4, color: TEAL, whiteSpace: 'nowrap' }}>SENIOR OPERATION ANALYST</div>
+            <div style={{ display: 'flex', width: 40, height: 3, backgroundColor: TEAL, marginTop: 6, flexShrink: 0 }} />
+            <div style={{ display: 'flex', fontSize: 18, fontWeight: 600, letterSpacing: 2.5, lineHeight: 1.3, color: TEAL, maxWidth: 460 }}>AUTOMATION SPECIALIST &amp; CONTENT STRATEGIST</div>
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 26, marginTop: 50 }}>
